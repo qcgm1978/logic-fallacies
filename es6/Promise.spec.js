@@ -13,7 +13,8 @@ describe('asynchronous programming background', () => {
         let i = '';
         fs.should.instanceof(Object, '');
         i.should.equal('')
-        const filePath = path.join(__dirname, 'file.txt');
+        // let filePath = path.join(__dirname, 'file.txt');
+        let filePath=__dirname+'/file.txt';
         fs.readFile(filePath, {encoding: 'utf-8'},  (err, data) =>{
             if (err) {
                 console.log(err);
