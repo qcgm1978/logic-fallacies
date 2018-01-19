@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "watch": {
-    "test": "lib/*.js"
+    "test": "es6/*.js"
   },
   "scripts": {
-    "test": "mocha lib/**/**.spec.js",
+    "test": "mocha es6/**/**.spec.js",
     "watch": "npm-watch"
   },
   "keywords": [],
