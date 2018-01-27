@@ -1,8 +1,6 @@
 //idea from https://rollbar.com/blog/top-10-javascript-errors/
-const chai = require('chai');
-const assert = chai.assert,
-    should = chai.should(),
-    expect = chai.expect;
+const chai = require('chai'), assert = chai.assert,
+    should = chai.should();
 
 describe("Uncaught TypeError: Cannot read property", () => {
     it(" improper initialization", () => {
