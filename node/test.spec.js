@@ -26,14 +26,9 @@ describe('js feature', () => {
     const http = require('http');
     http.should.instanceof(Object);
     http.createServer.should.instanceof(Function)
-    // done()
     new Promise((resolve, reject) => {
       http.createServer((request, response) => {
-        // response.writeHead(200);
-        // response.end('Hello, World!');
-        // resolve({ request, response })
         console.log('Server running on http://localhost:3000');
-
       }).listen(3000);
 
     }).then(({ request, response }) => {
@@ -41,7 +36,6 @@ describe('js feature', () => {
       request.should.instanceof(Boolean).and.notify(done)
     });
     done()
-
   });
   it('open', (done) => {
     const fs = require('fs');
