@@ -100,13 +100,13 @@ describe("Uncaught TypeError: Cannot read property", () => {
         }
         func.should.throw(TypeError);
     })
-    it('ReferenceError: event is not defined', () => {
-        const func = () => {
+    it('TypeError: event is not defined', () => {
+        const func = (event) => {
             event = event.which || event.keyCode;
             if (event.keyCode === 13) {
                 alert(event.keyCode);
             }
         }
-        func.should.throw(ReferenceError);
+        func.should.throw(TypeError);
     })
 });
