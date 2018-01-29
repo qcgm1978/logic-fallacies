@@ -39,7 +39,7 @@ describe('js feature', () => {
   });
   it('open', (done) => {
     const fs = require('fs');
-    fs.readFile('./lib/test.txt', { encoding: 'utf-8' }, (err, data) => {
+    fs.readFile('./others/test.txt', { encoding: 'utf-8' }, (err, data) => {
       data.should.equal('text')
       done()
 

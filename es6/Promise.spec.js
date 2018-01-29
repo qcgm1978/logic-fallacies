@@ -25,5 +25,27 @@ describe('asynchronous programming background', () => {
             }
         });
         i.should.equal('')
+    });
+    it('Synchronous iteration',()=>{
+        const iterable = ['a', 'b'];
+        const iterator = iterable[Symbol.iterator]();
+        iterator.next().should.eql({value:'a',done:false})
+        iterator.next().should.eql({value:'b',done:false})
+        iterator.next().should.eql({value:undefined,done:true})
+    });
+    it('Asynchronous iteration',()=>{
+        // const asyncIterable = createAsyncIterable(['a', 'b']);
+// const asyncIterator = asyncIterable[Symbol.asyncIterator]();
+// async function f() {
+//     const asyncIterable = createAsyncIterable(['a', 'b']);
+//     const asyncIterator = asyncIterable[Symbol.asyncIterator]();
+//     console.log(await asyncIterator.next());
+//         // { value: 'a', done: false }
+//     console.log(await asyncIterator.next());
+//         // { value: 'b', done: false }
+//     console.log(await asyncIterator.next());
+//         // { value: undefined, done: true }
+// }
+
     })
 });
