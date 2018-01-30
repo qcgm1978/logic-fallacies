@@ -5,10 +5,10 @@
   "main": "src/index.js",
   "chromium-args": "--enable-logging=stderr",
   "watch": {
-    "test": "**/*.js"
+    "test": "es6/*.js"
   },
   "scripts": {
-    "test": "mocha **/**.spec.js",
+    "test": "mocha es6/**.spec.js",
     "watch": "npm-watch",
     "start": "webpack-dashboard -- webpack-dev-server",
     "prebuild": "rimraf dist",
@@ -24,16 +24,11 @@
     "babel-loader": "6.2.5",
     "babel-preset-es2015": "6.16.0",
     "chai": "^3.4.1",
-    "css-loader": "0.25.0",
-    "file-loader": "0.9.0",
-    "html-loader": "0.4.4",
     "html-webpack-plugin": "2.24.0",
-    "karmatic": "^1.0.5",
     "mocha": "^4.1.0",
     "npm-watch": "^0.3.0",
     "open-browser-webpack-plugin": "0.0.2",
     "rimraf": "2.5.4",
-    "style-loader": "0.13.1",
     "webpack": "1.13.2",
     "webpack-dashboard": "0.2.0",
     "webpack-dev-server": "1.16.2"
