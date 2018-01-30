@@ -13,9 +13,8 @@ describe('asynchronous programming background', () => {
         let i = '';
         fs.should.instanceof(Object, '');
         i.should.equal('')
-        // let filePath = path.join(__dirname, 'file.txt');
-        let filePath=__dirname+'/file.txt';
-        fs.readFile(filePath, {encoding: 'utf-8'},  (err, data) =>{
+        let filePath = __dirname + '/file.txt';
+        fs.readFile(filePath, {encoding: 'utf-8'}, (err, data) => {
             if (err) {
                 console.log(err);
             } else {
@@ -26,26 +25,33 @@ describe('asynchronous programming background', () => {
         });
         i.should.equal('')
     });
-    it('Synchronous iteration',()=>{
+    it('Synchronous iteration', () => {
         const iterable = ['a', 'b'];
         const iterator = iterable[Symbol.iterator]();
-        iterator.next().should.eql({value:'a',done:false})
-        iterator.next().should.eql({value:'b',done:false})
-        iterator.next().should.eql({value:undefined,done:true})
+        iterator.next().should.eql({value: 'a', done: false})
+        iterator.next().should.eql({value: 'b', done: false})
+        iterator.next().should.eql({value: undefined, done: true})
     });
-    it('Asynchronous iteration',()=>{
-        // const asyncIterable = createAsyncIterable(['a', 'b']);
-// const asyncIterator = asyncIterable[Symbol.asyncIterator]();
-// async function f() {
-//     const asyncIterable = createAsyncIterable(['a', 'b']);
-//     const asyncIterator = asyncIterable[Symbol.asyncIterator]();
-//     console.log(await asyncIterator.next());
-//         // { value: 'a', done: false }
-//     console.log(await asyncIterator.next());
-//         // { value: 'b', done: false }
-//     console.log(await asyncIterator.next());
-//         // { value: undefined, done: true }
-// }
-
+    it('window.$CONFIG.sinaSSOControllerTemporary.lock', () => {
+        // Async/Await
+        const main = async (paramsA, paramsB, paramsC) => {
+            const resA = await funcA(paramsA)
+            const resB = await funcB(paramsB)
+            const resC = await funcC(paramsC)
+            return {resA, resB, resC}
+        }
+        const funcA = () => {
+        }
+        const funcB = () => {
+        }
+        const funcC = () => {
+        }
+        main()
+            .then(d => {
+                d.should.instanceof(Object)
+            })
+            .catch(e => {
+                console.log(e)
+            })
     })
 });

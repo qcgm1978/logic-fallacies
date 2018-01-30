@@ -8,12 +8,9 @@
     "test": "es6/*.js"
   },
   "scripts": {
-    "test": "mocha es6/**.spec.js",
+    "test": "mocha es6/Promise.spec.js",
     "watch": "npm-watch",
-    "start": "webpack-dashboard -- webpack-dev-server",
-    "prebuild": "rimraf dist",
-    "build": "webpack -p",
-    "debug": "node --inspect --debug-brk webpack.config.js"
+    "prebuild": "rimraf dist"
   },
   "keywords": [],
   "author": "",
@@ -21,16 +18,15 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "6.17.0",
-    "babel-loader": "6.2.5",
-    "babel-preset-es2015": "6.16.0",
-    "html-webpack-plugin": "2.24.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
     "mocha": "^4.1.0",
     "npm-watch": "^0.3.0",
-    "open-browser-webpack-plugin": "0.0.2",
     "rimraf": "2.5.4",
-    "webpack": "1.13.2",
-    "webpack-dashboard": "0.2.0",
-    "webpack-dev-server": "1.16.2"
+    "webpack": "^3.10.0"
   },
   "dependencies": {
     "chai": "^4.1.2",
