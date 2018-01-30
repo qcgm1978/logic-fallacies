@@ -46,8 +46,8 @@ describe('destructuring for easier data access', () => {
         let func1 = ({ a, b, c, d } = {}) => [a, b, c, d]
         func1().should.eql([undefined, undefined, undefined, undefined])
         func1({ a: 'a', c: 'c' }).should.eql(['a', undefined, 'c', undefined]);
-        const func2=({a,b,c,d}={a:1,b:2,c:3,d:4})=>[a,b,c,d]
-        func2().should.eql([1,2,3,4])
+        const func2 = ({ a, b, c, d, e } = { a: 1, b: 2, c: 3, d: 4 }) => [a, b, c, d, e]
+        func2().should.eql([1, 2, 3, 4, undefined])
     })
     it('default values for destructured parameters', () => {
         let func = ({ a, b = 'b', c, d = 'd' } = {}) => [a, b, c, d]
