@@ -42,7 +42,6 @@ describe('js feature', () => {
     fs.readFile('./others/test.txt', { encoding: 'utf-8' }, (err, data) => {
       data.should.equal('text')
       done()
-
     });
   });
 })
