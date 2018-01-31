@@ -8,7 +8,7 @@
     "test": "es6/*.js"
   },
   "scripts": {
-    "test": "mocha es6/Promise.spec.js",
+    "test": "mocha es6/other.spec.js",
     "watch": "npm-watch",
     "prebuild": "rimraf dist"
   },
