@@ -5,10 +5,10 @@
   "main": "src/index.js",
   "chromium-args": "--enable-logging=stderr",
   "watch": {
-    "test": "es6/*.js"
+    "test": "algorithm/*.js"
   },
   "scripts": {
-    "test": "mocha es6/other.spec.js",
+    "test": "mocha algorithm/*.spec.js",
     "watch": "npm-watch",
     "prebuild": "rimraf dist"
   },
@@ -33,6 +33,7 @@
     "chai": "^4.1.2",
     "knex": "^0.14.2",
     "lodash": "^4.17.4",
-    "pg": "^7.4.0"
+    "pg": "^7.4.0",
+    "regression": "https://github.com/qcgm1978/regression-js.git"
   }
 }
