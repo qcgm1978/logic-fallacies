@@ -45,9 +45,17 @@ describe('es6 features', () => {
         result2.should.eql(actual)
     });
     it('Cloning', () => {
-        const oldObj={a:1,b:2},oldArr=[1,2,3]
+        const oldObj = { a: 1, b: 2 }, oldArr = [1, 2, 3]
         // const obj = { ...oldObj }
         const arr = [...oldArr]
         arr.should.eql(oldArr)
+    });
+    it('for..in and for...of', () => {
+        (()=>{
+            for(const p of {a:1}){}
+        }).should.throw();
+        (()=>{
+            for(const p in null){}
+        }).should.not.throw();
     })
 })

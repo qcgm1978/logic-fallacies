@@ -5,10 +5,10 @@
   "main": "src/index.js",
   "chromium-args": "--enable-logging=stderr",
   "watch": {
-    "test": "algorithm/*.js"
+    "test": "es6/*.js"
   },
   "scripts": {
-    "test": "mocha algorithm/*.spec.js",
+    "test": "mocha es6/*.spec.js",
     "watch": "npm-watch",
     "prebuild": "rimraf dist"
   },
