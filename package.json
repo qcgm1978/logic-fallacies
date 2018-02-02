@@ -23,6 +23,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "chai-match": "^1.1.1",
     "mocha": "^4.1.0",
     "npm-watch": "^0.3.0",
     "rimraf": "2.5.4",
