@@ -23,7 +23,7 @@ describe("normalizeData", function () {
         }
         let reject = Promise.reject(new Error('Explosion'))
     });
-    it('returning values in promise chainings', () => {
+    it('returning values or Promises in promise chainings', () => {
         const promise = new Promise((resolve, reject) => {
             resolve(42);
         }),promise1=new Promise(resolve=>{
