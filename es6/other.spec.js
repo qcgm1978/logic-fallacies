@@ -1,9 +1,14 @@
 const chai = require('chai'), should = chai.should();
 describe('es6 features', () => {
     it(' Array.from() accepts a second argument that\'s a `map` function. ', () => {
-        let year = new Date().getFullYear(), arr = Array(5);
+        const year = new Date().getFullYear(), arr = Array(5);
         arr.should.instanceof(Array);
         arr.length.should.equal(5);
+        arr.should.eql([,,,,,]);
+        year.should.equal(2018)
+        const web=Array.from('web')
+        web.should.eql(['w','e','b']);
+        Array.from(Array(5),(_,i)=>year+i+1).should.eql([2019,2020,2021,2022,2023])
     });
     it(' Swap variables', () => {
         var a = 'world', b = 'hello';
