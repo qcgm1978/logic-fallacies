@@ -26,12 +26,22 @@ describe("normalizeData", function () {
     it('returning values in promise chainings', () => {
         const promise = new Promise((resolve, reject) => {
             resolve(42);
+        }),promise1=new Promise(resolve=>{
+            resolve(0)
+        }),reject=new Promise((_,reject)=>{
+            reject(new Error())  
         });
         promise.then((data) => {
             expect(data).toEqual(42);
             return data + 1
         }).then(data => {
-            expect(data).toEqual(43)
+            expect(data).toEqual(43);
+            return promise1;
+        }).then(data=>{
+            expect(data).toBeFalsy();
+            return reject;
+        }).catch(data=>{
+            expect(data).toThrow()
         })
     })
 });
