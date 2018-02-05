@@ -5,10 +5,11 @@
   "main": "src/index.js",
   "chromium-args": "--enable-logging=stderr",
   "watch": {
-    "test": "es6/*.js"
+    "test": "tests/*.js"
   },
   "scripts": {
-    "test": "mocha algorithm/*.spec.js es6/*.spec.js",
+    "test": "gulp test",
+    "test-mocha": "mocha algorithm/*.spec.js es6/*.spec.js",
     "watch": "npm-watch",
     "prebuild": "rimraf dist"
   },
@@ -28,7 +29,11 @@
     "npm-watch": "^0.3.0",
     "rimraf": "2.5.4",
     "sinon": "^4.2.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "karma": "^0.13.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-chrome-launcher": "^0.2.0",
+    "gulp": "^3.9.0"
   },
   "dependencies": {
     "chai": "^4.1.2",

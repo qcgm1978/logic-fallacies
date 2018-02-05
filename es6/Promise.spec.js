@@ -131,3 +131,58 @@ describe('asynchronous programming background', () => {
     });
     
 });
+
+describe('.fetchCurrentTemperature', function() {
+	var temperaturePromise;
+	var promiseHelper;
+
+	beforeEach(function() {
+		var fetchPromise = new Promise(function(resolve, reject) {
+			promiseHelper = {
+				resolve: resolve,
+				reject: reject
+			};
+		});
+		spyOn(window, 'fetch').and.returnValue(fetchPromise);
+		temperaturePromise = WeatherService.fetchCurrentTemperature();
+	});
+
+	it('fetches from the weather API', function() {
+		expect(window.fetch).toHaveBeenCalledWith('someweatherapi.com');
+	});
+
+	it('returns a promise', function() {
+		expect(temperaturePromise).toEqual(jasmine.any(Promise));
+	});
+
+	describe('on successful fetch', function() {
+		beforeEach(function() {
+			var response = new Response(JSON.stringify({
+				temperature: 78
+			}));
+			promiseHelper.resolve(response);
+		});
+
+		it('resolves its promise with the current temperature', function(done) {
+			temperaturePromise.then(function(temperature) {
+				expect(temperature).toEqual(78);
+				done();
+			});
+		});
+	});
+
+	describe('on unsuccessful fetch', function() {
+		var errorObj = { msg: 'Wow, this really failed!' };
+
+		beforeEach(function() {
+			promiseHelper.reject(errorObj);
+		});
+
+		it('resolves its promise with the current temperature', function(done) {
+			temperaturePromise.catch(function(error) {
+				expect(error).toEqual(errorObj);
+				done();
+			});
+		});
+	});
+});
