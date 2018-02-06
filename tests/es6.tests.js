@@ -80,7 +80,7 @@ describe('.fetchCurrentTemperature', function () {
             temperaturePromise.then(function (temperature) {
                 expect(temperature).toEqual(78);
             }).then(()=>{
-                // expect(true).toEqual(true)
+                expect(true).toEqual(true)
                 done();
             });
         });
