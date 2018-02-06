@@ -12,3 +12,16 @@ function normalizeData(jsonIn) {
         id: data.PersonalIdentifier
     };
 }
+var WeatherService = {
+	fetchCurrentTemperature: fetchCurrentTemperature
+};
+
+function fetchCurrentTemperature() {
+	return fetch('someweatherapi.com')
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(data) {
+			return data.temperature;
+		});
+}
