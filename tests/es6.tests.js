@@ -19,7 +19,7 @@ describe("normalizeData", function () {
         console.log(unhandle)
         expect(typeof unhandle).toEqual('object');
         unhandle = () => {
-            expect(true).toBeFalsy
+            expect(true).toBeFalsy()
         }
         let reject = Promise.reject(new Error('Explosion'))
     });
@@ -61,6 +61,7 @@ describe('.fetchCurrentTemperature', function () {
     });
 
     it('fetches from the weather API', function () {
+        expect(window.fetch instanceof Function).toBeTruthy()
         expect(window.fetch).toHaveBeenCalledWith('someweatherapi.com');
     });
 

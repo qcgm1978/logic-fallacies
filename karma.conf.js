@@ -61,8 +61,15 @@ module.exports = function (config) {
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         // browsers: ['ChromeHeadless'],
-        browsers:['Chrome'],
-
+        // browsers:['Chrome'],
+        browsers: ['ChromeHeadless_without_security'],
+        customLaunchers: {
+          ChromeHeadless_without_security: {
+            base: 'ChromeHeadless',
+            flags: ['--disable-web-security']
+          }
+        },
+        browserNoActivityTimeout: 60000,
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
         singleRun: false,
