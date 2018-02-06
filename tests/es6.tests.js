@@ -55,6 +55,10 @@ describe("normalizeData", function () {
         expect(ins.baz).toBeUndefined();
         expect(ins.notBaz).toEqual(15)
         expect(foo.baz).toBeUndefined()
+    });
+    it('regExp es6', () => {
+        //ES2018: RegExp named capture groups. Not Support now.
+        expect(() => /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/).toThrowError(SyntaxError);
     })
 });
 describe('.fetchCurrentTemperature', function () {
