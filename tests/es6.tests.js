@@ -26,10 +26,10 @@ describe("normalizeData", function () {
     it('returning values or Promises in promise chainings', () => {
         const promise = new Promise((resolve, reject) => {
             resolve(42);
-        }),promise1=new Promise(resolve=>{
+        }), promise1 = new Promise(resolve => {
             resolve(0)
-        }),reject=new Promise((_,reject)=>{
-            reject(new Error())  
+        }), reject = new Promise((_, reject) => {
+            reject(new Error())
         });
         promise.then((data) => {
             expect(data).toEqual(42);
@@ -37,12 +37,24 @@ describe("normalizeData", function () {
         }).then(data => {
             expect(data).toEqual(43);
             return promise1;
-        }).then(data=>{
+        }).then(data => {
             expect(data).toBeFalsy();
             return reject;
-        }).catch(data=>{
+        }).catch(data => {
             expect(data).toThrow()
         })
+    });
+    it('set', () => {
+        const foo = {
+            set baz(val) {
+                this.notBaz = val;
+            }
+        }
+        let ins = Object.create(foo);
+        ins.baz = 15;
+        expect(ins.baz).toBeUndefined();
+        expect(ins.notBaz).toEqual(15)
+        expect(foo.baz).toBeUndefined()
     })
 });
 describe('.fetchCurrentTemperature', function () {
@@ -80,7 +92,7 @@ describe('.fetchCurrentTemperature', function () {
         it('resolves its promise with the current temperature', function (done) {
             temperaturePromise.then(function (temperature) {
                 expect(temperature).toEqual(78);
-            }).then(()=>{
+            }).then(() => {
                 expect(true).toEqual(true)
                 done();
             });
