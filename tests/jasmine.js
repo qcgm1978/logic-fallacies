@@ -8,5 +8,6 @@ describe('Global',()=>{
         expect(NaN).not.toBe(NaN)
         expect(NaN).toEqual(NaN)
         expect(NaN).toBeNaN()
+        expect(123.99).toBeCloseTo(124,0.1)
     })
 })

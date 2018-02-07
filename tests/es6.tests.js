@@ -44,6 +44,33 @@ describe("normalizeData", function () {
             expect(data).toThrow()
         })
     });
+    it('the Promise.all() method',()=>{
+        const p1=new Promise(resolve=>resolve(42)),p3=new Promise(resolve=>resolve(44));
+        let p2=new Promise(resolve=>resolve(43));
+        Promise.all([p1,p2,p3]).then((data)=>{
+            expect(data).toEqual([42,43,44])
+        });
+        p2=new Promise((resolve,reject)=>{
+            reject(0)
+        })
+        Promise.all([p1,p2,p3]).catch(data=>{
+            expect(data).toEqual(0)
+        })
+    });
+    it('the Promise.race() method',()=>{
+        const p1=new Promise(resolve=>setTimeout(resolve.bind(42))),
+        p3=new Promise(resolve=>resolve(44));
+        let p2=Promise.resolve(43);
+        Promise.race([p1,p2,p3]).then((data)=>{
+            expect(data).toEqual(43)
+        });
+        p2=new Promise((resolve,reject)=>{
+            reject(0)
+        })
+        Promise.race([p1,p2,p3]).catch(data=>{
+            expect(data).toEqual(0)
+        })
+    });
     it('set', () => {
         const foo = {
             set baz(val) {
