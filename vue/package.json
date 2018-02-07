@@ -5,7 +5,10 @@
   "author": "zhanghl-k <zhanghl-k@glodon.com>",
   "private": true,
   "watch": {
-    "test": "test/**/*.js"
+    "test": {
+      "patterns": ["src", "test"],
+      "extensions": "js,vue"
+    }
   },
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
