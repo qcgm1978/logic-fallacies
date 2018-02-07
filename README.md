@@ -1,5 +1,9 @@
 # logic-fallacies
 
+## Description
+
+All types of tests for FE DEV
+
 > ## Install
 
 Install with [npm](https://www.npmjs.com/)
