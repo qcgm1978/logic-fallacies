@@ -1,3 +1,4 @@
+// reference: https://beta.observablehq.com/d/c83816ec6a91ab91
 const num_points=125;
 const squared = (val) => Math.pow(val, 2)
 const make_array = (n) => [...(new Array(n))]
