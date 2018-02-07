@@ -118,3 +118,15 @@ describe('.fetchCurrentTemperature', function () {
         });
     });
 });
+describe('built-in string methods',()=>{
+    it('keep getting better',()=>{
+        const hello='Hello'
+        expect(hello.includes('ell')).toBeTruthy()
+        expect(hello.startsWith('He')).toBeTruthy();
+        expect(hello.endsWith('llo')).toBeTruthy()
+        expect(hello.repeat(3)).toEqual('HelloHelloHello');
+        expect(hello.codePointAt(1)).toEqual(101)
+        expect(hello.padStart(10)).toEqual('     Hello')
+        expect(hello.padEnd(10)).toEqual('Hello     ')
+    })
+})
