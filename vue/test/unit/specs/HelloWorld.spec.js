@@ -12,7 +12,10 @@ describe('HelloWorld.vue', () => {
     const Constructor = Vue.extend(HelloWorld)
     const vm = new Constructor().$mount();
     expect(vm.$el.querySelectorAll('a').length)
-      .toEqual(9);
+      .toEqual(10);
     expect(true).toBeTruthy()
   })
+})
+describe('Others', () => {
+
 })

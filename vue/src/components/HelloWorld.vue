@@ -79,14 +79,14 @@
           awesome-vue
         </a>
       </li>
-      <!-- <li>
+      <li>
         <a
           href="https://github.com/vuejs/awesome-vue"
           target="_blank"
         >
           customize
         </a>
-      </li> -->
+      </li>
     </ul>
   </div>
 </template>
