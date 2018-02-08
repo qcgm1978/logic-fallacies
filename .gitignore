@@ -8,6 +8,7 @@ yarn-error.log*
 /test/unit/coverage/
 /test/e2e/reports/
 selenium-debug.log
+jspm/jspm_packages/
 
 # Editor directories and files
 .idea
