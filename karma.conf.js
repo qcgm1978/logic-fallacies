@@ -19,10 +19,10 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            // 'www/scripts/*.js',
-            // 'tests/*.js',
+            'jasmine-www/scripts/*.js',
+            'jasmine-tests/*.js',
             // { pattern: 'src/client/screen.css', included: false }
-            't-SNE/*.js'
+            // 't-SNE/*.js'
         ],
 
 
