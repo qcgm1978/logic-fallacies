@@ -21,6 +21,8 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    "space-before-function-paren":[0],
+    quotes: [0, "double"],
     "semi": 0,
     // allow async-await
     'generator-star-spacing': 'off',
