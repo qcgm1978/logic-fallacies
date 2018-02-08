@@ -8,6 +8,27 @@ describe('es7', () => {
         const arr = [1, 2, 3];
         expect(arr.includes(1)).toBeTruthy();
         expect(arr.includes(1, 1)).toBeFalsy()
+    });
+    it('object.values', () => {
+        var obj = { a: 1, b: 2, c: 3 };
+        var expected = [1, 2, 3];
+
+        if (typeof Symbol === 'function' && typeof Symbol() === 'symbol') {
+            // for environments with Symbol support
+            var sym = Symbol();
+            obj[sym] = 4;
+            obj.d = sym;
+            expected.push(sym);
+        }
+
+        // expect(values(obj)).toBe(object.values);
+
+        // if (!Object.values) {
+        //     values.shim();
+        // }
+
+        expect(Object.values(obj)).toEqual(expected)
+        // expect(Object.values(obj)).toEqual([ 1, 2, 3, Symbol() ]);
     })
 });
 describe('es8', () => {
