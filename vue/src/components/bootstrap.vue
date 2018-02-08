@@ -29,7 +29,7 @@
 </template>
 
 <script>
-require('bootstrap/dist/css/bootstrap.min.css');
+require("bootstrap/dist/css/bootstrap.min.css");
 export default {
   name: "Bootstrap",
   data() {
