@@ -8,7 +8,8 @@
     "test": {
       "patterns": [
         "src",
-        "test"
+        "test/e2e/specs",
+        "test/unit/specs"
       ],
       "extensions": "js,vue"
     }
@@ -19,8 +20,8 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "watch": "npm-watch",
-    "test": "npm run unit",
-    "test-all": "npm run unit && npm run e2e",
+    "test-unit": "npm run unit",
+    "test": "npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js"
   },
