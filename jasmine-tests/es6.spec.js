@@ -1,6 +1,6 @@
 // First argument to 'describe' (which is defined by Jasmine) is the testing module that will
 // appear in test reports. The second argument is a callback containing the individual tests.
-describe("normalizeData", function () {
+describe("es6", function () {
     // The 'it' function of Jasmine defined an individual test. The first argument is
     // a description of the test that's appended to the module name. Because a module name
     // is typically a noun, like the name of the function being tested, the description for
@@ -167,5 +167,11 @@ describe('Regular Expression', () => {
     it('RegExp Named Capture Groups', () => {
         // let re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
         // let result = re.exec('2015-01-02');
+    })
+})
+describe('', () => {
+    it('', () => {
+        const str=[...new Set('cabbcc')].join('')
+        expect(str).toEqual('cab')
     })
 })
