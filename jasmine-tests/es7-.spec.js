@@ -58,6 +58,54 @@ describe('es8', () => {
                 });
         }
     });
+    it('Handling multiple asynchronous results sequentially', () => {
+        // expect(true).toEqual()
+        async function otherAsyncFunc1() {
+            return 1
+        }
+        async function otherAsyncFunc2() {
+            return 2
+        }
+        async function asyncFunc() {
+            const result1 = await otherAsyncFunc1();
+            expect(result1).toEqual(1);
+            const result2 = await otherAsyncFunc2();
+            expect(result2 + result1).toEqual(3)
+        }
+        asyncFunc()
+        async function asyncFunc3() {
+            const arr = await Promise.all([
+                otherAsyncFunc1(),
+                otherAsyncFunc2(),
+            ]);
+            expect(arr).toEqual([1, 2]);
+        }
+        asyncFunc3()
+    })
+    it('Promises and generators can be combined to perform asynchronous operations via synchronous-looking code.', (done) => {
+        function fetchJson(url) {
+            return fetch(url)
+                .then((request) => {
+                    return request.text()
+                })
+                .then(text => {
+
+
+                    return JSON.parse(text);
+                })
+                .catch(error => {
+                    expect(error).toEqual({ fetch: true });
+                });
+        }
+        fetchJson('http://echo.jsontest.com/key/value/one/two')
+            .then(obj => {
+                expect(obj).toEqual({
+                    "one": "two",
+                    "key": "value"
+                });
+                done()
+            });
+    })
     it('Shared memory and atomics', () => {
         // todo
         // main.js
