@@ -171,7 +171,9 @@ describe('Regular Expression', () => {
 })
 describe('', () => {
     it('', () => {
-        const str=[...new Set('cabbcc')].join('')
+        const str = [...new Set('cabbcc')].join('')
         expect(str).toEqual('cab')
+        const removeRepetive = arr => [...new Set(arr)]
+        expect(removeRepetive([1, 3, 2, 1, 2])).toEqual([1, 3, 2])
     })
 })
