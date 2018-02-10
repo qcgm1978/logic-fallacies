@@ -11,3 +11,6 @@ describe('Global',()=>{
         expect(123.99).toBeCloseTo(124,0.1)
     })
 })
+describe('Following these rules, the code development steps are:', () => {
+    
+})

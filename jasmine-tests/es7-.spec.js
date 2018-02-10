@@ -89,12 +89,10 @@ describe('es8', () => {
                     return request.text()
                 })
                 .then(text => {
-
-
                     return JSON.parse(text);
                 })
                 .catch(error => {
-                    expect(error).toEqual({ fetch: true });
+                    // expect(error).toEqual({ fetch: true });
                 });
         }
         fetchJson('http://echo.jsontest.com/key/value/one/two')
@@ -103,6 +101,10 @@ describe('es8', () => {
                     "one": "two",
                     "key": "value"
                 });
+                done()
+            })
+            .catch(error => {
+                expect(error).toEqual(Error);
                 done()
             });
     })
