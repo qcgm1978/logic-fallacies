@@ -4,5 +4,5 @@ import underscore from 'myname';
 
 export function bootstrap() {
     // bootstrap code here
-    document.write('bootstrap module')
+    document.write('bootstrap module new')
 }
