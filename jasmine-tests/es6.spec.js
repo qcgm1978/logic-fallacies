@@ -177,3 +177,12 @@ describe('Axel Rauschmayer', () => {
         expect(removeRepetive([1, 3, 2, 1, 2])).toEqual([1, 3, 2]);
     })
 })
+describe('destructure assignment', () => {
+    it('object assignment', () => {
+        const a = { a: 1 }, b = {
+            b: 2, c: 3
+        }
+        const c = { ...a, ...b };
+        expect(c).toEqual({ a: 1, b: 2, c: 3 })
+    })
+})
