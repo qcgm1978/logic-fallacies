@@ -114,16 +114,20 @@ describe('es8', () => {
         // main.js
 
         const worker = new Worker('worker.js');
-
+        expect(worker instanceof Object).toBeTruthy()
         // To be shared
-        const sharedBuffer = new SharedArrayBuffer( // (A)
-            10 * Int32Array.BYTES_PER_ELEMENT); // 10 elements
 
-        // Share sharedBuffer with the worker
-        worker.postMessage({ sharedBuffer }); // clone
+        if (typeof SharedArrayBuffer !== 'undefined') {
+            const sharedBuffer = new SharedArrayBuffer( // (A)
+                10 * Int32Array.BYTES_PER_ELEMENT); // 10 elements
 
-        // Local only
-        const sharedArray = new Int32Array(sharedBuffer); // (B)
+            // Share sharedBuffer with the worker
+            worker.postMessage({ sharedBuffer }); // clone
+
+            // Local only
+            const sharedArray = new Int32Array(sharedBuffer); // (B)
+        }
+
     });
     it('New string methods: padStart and padEnd', () => {
         expect('x'.padStart(5, 'ab')).toEqual('ababx');

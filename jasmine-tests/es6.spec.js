@@ -85,7 +85,7 @@ describe("es6", function () {
     });
     it('regExp es6', () => {
         //ES2018: RegExp named capture groups. Not Support now.
-        expect(() => /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/).toThrowError(SyntaxError);
+        expect(() => /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/).not.toThrowError(SyntaxError);
     })
 });
 describe('.fetchCurrentTemperature', function () {
