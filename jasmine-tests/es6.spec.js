@@ -1,6 +1,7 @@
 // First argument to 'describe' (which is defined by Jasmine) is the testing module that will
 // appear in test reports. The second argument is a callback containing the individual tests.
 describe("es6", function () {
+
     // The 'it' function of Jasmine defined an individual test. The first argument is
     // a description of the test that's appended to the module name. Because a module name
     // is typically a noun, like the name of the function being tested, the description for
@@ -184,5 +185,14 @@ describe('destructure assignment', () => {
         }
         const c = { ...a, ...b };
         expect(c).toEqual({ a: 1, b: 2, c: 3 })
+    })
+})
+describe('block bindings', () => {
+    it('let declaration', () => {
+        let val;
+        if (true) {
+            let val = 1;
+        }
+        expect(val).toBeUndefined()
     })
 })

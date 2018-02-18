@@ -15,5 +15,11 @@ describe(' Intro to Chrome User Experience Report', () => {
         paint.forEach(element => {
             expect(element.name).toEqual()
         });
+    });
+    it('Test if Element Supports Attribute', () => {
+        const elementSupportsAttribute = (element, attribute) => {
+            return attribute in document.createElement(element);
+        };
+        elementSupportsAttribute("input", "inputmode") && expect(true).toBeFalsy()
     })
 })
