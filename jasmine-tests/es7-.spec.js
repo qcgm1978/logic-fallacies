@@ -1,4 +1,12 @@
 describe('es7', () => {
+    it('RegExp Named Capture Groups', () => {
+
+        // [ '2015-01-02', '2015', '01', '02', index: 0, input: '2015-01-02', groups: null({ year: '2015', month: '01', day: '02' }) ] 
+        const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
+        const result = re.exec('2015-01-02');
+        expect(result.groups).toEqual({ year: '2015', month: '01', day: '02' });
+        expect(result.input).toEqual('2015-01-02')
+    })
     it('Exponentiation Operator: two asterisks', () => {
         const expon = 5 ** 2, expon1 = Math.pow(5, 2)
         expect(expon).toEqual(expon1);
@@ -21,14 +29,7 @@ describe('es7', () => {
             expected.push(sym);
         }
 
-        // expect(values(obj)).toBe(object.values);
-
-        // if (!Object.values) {
-        //     values.shim();
-        // }
-
         expect(Object.values(obj)).toEqual(expected)
-        // expect(Object.values(obj)).toEqual([ 1, 2, 3, Symbol() ]);
     })
 });
 describe('es8', () => {
