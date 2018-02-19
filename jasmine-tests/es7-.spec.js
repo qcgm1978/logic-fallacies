@@ -4,6 +4,9 @@ describe('es7', () => {
         // [ '2015-01-02', '2015', '01', '02', index: 0, input: '2015-01-02', groups: null({ year: '2015', month: '01', day: '02' }) ] 
         const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
         const result = re.exec('2015-01-02');
+        expect(navigator.userAgent).toEqual('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/64.0.3282.167 Safari/537.36');
+        const userAgent = /headlessChrome\/(?<version>\S+)/i.exec(navigator.userAgent)
+        expect(userAgent.groups.version).toEqual('64.0.3282.167')
         expect(result.groups).toEqual({ year: '2015', month: '01', day: '02' });
         expect(result.input).toEqual('2015-01-02')
     })
