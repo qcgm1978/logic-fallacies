@@ -53,7 +53,7 @@ module.exports = function (config) {
 
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_ERROR,
 
 
         // enable / disable watching file and executing tests whenever any file changes
@@ -66,10 +66,10 @@ module.exports = function (config) {
         // browsers:['Chrome'],
         browsers: ['ChromeHeadless_without_security'],
         customLaunchers: {
-          ChromeHeadless_without_security: {
-            base: 'ChromeHeadless',
-            flags: ['--disable-web-security']
-          }
+            ChromeHeadless_without_security: {
+                base: 'ChromeHeadless',
+                flags: ['--disable-web-security']
+            }
         },
         browserNoActivityTimeout: 60000,
         // Continuous Integration mode
