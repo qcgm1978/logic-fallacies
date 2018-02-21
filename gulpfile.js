@@ -8,3 +8,12 @@ gulp.task('test', function (done) {
     singleRun: true
   }, done).start();
 });
+
+var ts = require('gulp-typescript');
+var tsProject = ts.createProject('tsconfig.json');
+
+gulp.task('scripts', function () {
+  var tsResult = tsProject.src().pipe(ts(tsProject));
+  return tsResult.js.pipe(gulp.dest('built'));
+});
+gulp.task('default', ['build', 'scripts', 'test']);

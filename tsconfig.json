@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "declaration": true,
+        "out": "tsoutput.js",
+        "sourceMap": true,
+        "watch": true
+    },
+    "files": [
+        "typescript/somefile.ts",
+        "typescript/anotherfile.ts"
+    ]
+}

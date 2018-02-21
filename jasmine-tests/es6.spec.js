@@ -165,10 +165,7 @@ describe('Regular Expression', () => {
         expect(/foo.bar/s.test('foo\nbar')).toBeTruthy();
 
     });
-    it('RegExp Named Capture Groups', () => {
-        // let re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
-        // let result = re.exec('2015-01-02');
-    })
+
 })
 describe('Axel Rauschmayer', () => {
     it('Removing duplicate characters from a string', () => {

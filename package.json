@@ -26,6 +26,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "chai-match": "^1.1.1",
+    "gaze-run-interrupt": "^1.0.1",
     "gulp": "^3.9.0",
     "karma": "^0.13.22",
     "karma-chai": "^0.1.0",
