@@ -3,8 +3,8 @@ const onmessage = function(e) {
    
     var sum = array.reduce(function(sum, element) { return sum + element.foo; }, 0);
    
-    postMessage1(sum);
-    function postMessage1(result) {
+    postMessage(sum);
+    function postMessage(result) {
         expect(result).toBe(6);
     }
   };
