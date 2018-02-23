@@ -21,5 +21,10 @@ describe(' Intro to Chrome User Experience Report', () => {
             return attribute in document.createElement(element);
         };
         elementSupportsAttribute("input", "inputmode") && expect(true).toBeFalsy()
+    });
+    it('Web Workers run in an isolated thread', () => {
+        expect(() => new Worker).toThrow();
+        expect(() => new Worker('task.js')).not.toThrow();
+        expect(new Worker('task.js').postMessage('Hello World')).toEqual(undefined)
     })
 })

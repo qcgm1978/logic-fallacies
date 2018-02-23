@@ -5,6 +5,7 @@
 // const revisionInfo = Downloader.revisionInfo(Downloader.currentPlatform(), ChromiumRevision)
 
 // process.env.CHROME_BIN = revisionInfo.executablePath;
+// console.log = function() {}
 module.exports = function (config) {
     config.set({
 
@@ -15,7 +16,9 @@ module.exports = function (config) {
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['jasmine'],
-
+        // client: {
+        //     captureConsole: false
+        // },
 
         // list of files / patterns to load in the browser
         files: [
@@ -40,7 +43,7 @@ module.exports = function (config) {
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress'],
+        reporters: ['dots'],
 
 
         // web server port
