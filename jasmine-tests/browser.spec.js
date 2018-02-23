@@ -23,8 +23,20 @@ describe(' Intro to Chrome User Experience Report', () => {
         elementSupportsAttribute("input", "inputmode") && expect(true).toBeFalsy()
     });
     it('Web Workers run in an isolated thread', () => {
-        expect(() => new Worker).toThrow();
-        expect(() => new Worker('task.js')).not.toThrow();
-        expect(new Worker('task.js').postMessage('Hello World')).toEqual(undefined)
+        var http = new XMLHttpRequest();
+        http.open('GET', 'task.js', false);
+        http.send();
+
+        var workerCode = http.responseText;
+        onmessage({ data: [{ foo: 1 }, { foo: 2 }, { foo: 3 }] });
+        const worker = new Worker('task.js');
+        worker.addEventListener('message', function (e) {
+            // not support the task.js path, so the following not execute
+            expect(true).toBeFalsy()
+            console.log('Worker said: ', e.data);
+            done();
+        }, false);
+        expect(worker.postMessage('Hello World')).toEqual(undefined);
+
     })
 })
