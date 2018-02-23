@@ -43,6 +43,32 @@ describe('es7', () => {
     })
 });
 describe('es8', () => {
+    it('The Float32Array typed array represents an array of 32-bit floating point numbers', () => {
+        // From a length
+        var float32 = new Float32Array(2);
+        float32[0] = 42;
+        expect(float32[0]).toEqual(42); // 42
+        expect(float32.length).toEqual(2); // 2
+        expect(float32.BYTES_PER_ELEMENT).toEqual(4); // 4
+
+        // From an array
+        var arr = new Float32Array([21, 31]);
+        expect(arr[1]).toEqual(31); // 31
+
+        // From another TypedArray
+        var x = new Float32Array([21, 31]);
+        var y = new Float32Array(x);
+        expect(y[0]).toEqual(21); // 21
+
+        // From an ArrayBuffer
+        var buffer = new ArrayBuffer(16);
+        var z = new Float32Array(buffer, 0, 4);
+
+        // From an iterable 
+        var iterable = function* () { yield* [1, 2, 3]; }();
+        var float32 = new Float32Array(iterable);
+        expect(float32).toEqual(new Float32Array([1, 2, 3]))
+    })
     it('async', () => {
         async function asyncFunc1() {
             return 123;

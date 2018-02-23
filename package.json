@@ -8,6 +8,7 @@
     "test": "jasmine-tests/*.js"
   },
   "scripts": {
+    "start":"npm run watch",
     "test-karma": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
     "test": "gulp test",
     "test-mocha": "mocha algorithm/*.spec.js es6/*.spec.js",
