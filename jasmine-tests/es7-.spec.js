@@ -1,14 +1,21 @@
 describe('es7', () => {
     it('RegExp Named Capture Groups', () => {
+        const userAgent = /headlessChrome\/(\S+)/i.exec(navigator.userAgent)
+        expect('64').toBeGreaterThan(63)
+        if (/\d+/.exec(userAgent[1])[0] > 63) {
 
-        // [ '2015-01-02', '2015', '01', '02', index: 0, input: '2015-01-02', groups: null({ year: '2015', month: '01', day: '02' }) ] 
-        const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
-        const result = re.exec('2015-01-02');
-        expect(navigator.userAgent).toEqual('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/64.0.3282.167 Safari/537.36');
-        const userAgent = /headlessChrome\/(?<version>\S+)/i.exec(navigator.userAgent)
-        expect(userAgent.groups.version).toEqual('64.0.3282.167')
-        expect(result.groups).toEqual({ year: '2015', month: '01', day: '02' });
-        expect(result.input).toEqual('2015-01-02')
+            //ES2018: RegExp named capture groups. Not Support now.
+            expect(() => /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/).not.toThrowError(SyntaxError);
+            // [ '2015-01-02', '2015', '01', '02', index: 0, input: '2015-01-02', groups: null({ year: '2015', month: '01', day: '02' }) ] 
+            const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
+            const result = re.exec('2015-01-02');
+            // 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) HeadlessChrome/63.0.3239.132 Safari/537.36'
+            expect(navigator.userAgent).toEqual('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/64.0.3282.167 Safari/537.36');
+
+            expect(result.groups).toEqual({ year: '2015', month: '01', day: '02' });
+            expect(result.input).toEqual('2015-01-02')
+        }
+
     })
     it('Exponentiation Operator: two asterisks', () => {
         const expon = 5 ** 2, expon1 = Math.pow(5, 2)
