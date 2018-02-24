@@ -20,9 +20,17 @@ describe('others', () => {
         expect(h1.style.filter).toEqual('url("#image")')
     });
     it('renting', () => {
-        const total = 4900, me = 2000, her = 1500, cigarette = 30 * 10, supper = 20 * 10, medicine = 100, taxi = 15 * 6 + 10, timeConvertMoney = 10 / 60 * 30 * (23000 / 21 / 8),happiness=Infinity;
+        const total = 4900, me = 2000, her = 1500, cigarette = 30 * 10, supper = 20 * 10, medicine = 100, taxi = 15 * 6 + 10, timeConvertMoney = 10 / 60 * 30 * (23000 / 21 / 8), happiness = Infinity;
         expect(timeConvertMoney).toBeGreaterThan(650)
-        expect(me+her+cigarette+supper+medicine+taxi+timeConvertMoney+happiness).toBeGreaterThan(total)
-        
+        expect(me + her + cigarette + supper + medicine + taxi + timeConvertMoney + happiness).toBeGreaterThan(total)
+
+    })
+});
+describe('Progressive Web App', () => {
+    it(' It loads quickly, even on flaky networks, sends relevant push notifications, has an icon on the home screen, and loads as a top-level, full screen experience', () => {
+        const PWA = 'PRCAFSDRIL', contents = 'Progressive, Responsive, Connectivity independent, App-like, Fresh, Safe, Discoverable, Re-engageable, Installable, Linkable';
+        const arr = contents.match(/[A-Z]/g);
+        // console.log(arr)
+        expect(arr.join('')).toEqual(PWA)
     })
 })
