@@ -33,4 +33,11 @@ describe('Progressive Web App', () => {
         // console.log(arr)
         expect(arr.join('')).toEqual(PWA)
     })
+});
+describe('Star Wars', () => {
+    it('Theatrical films', () => {
+
+        const originalTrilogy = ['A New Hope', 'The Empire Strikes Back', 'Return of the Jedi',], prequelTrilogy = ['The Phantom Menace', 'Attack of the clones', 'Revenge of the Sith'], sequelTrilogy = ['The force Awakens', 'The Last Jedi', '']
+        expect(originalTrilogy.concat(prequelTrilogy, sequelTrilogy).length).toBe(9)
+    })
 })
