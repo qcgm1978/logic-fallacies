@@ -18,7 +18,8 @@
     "test": "gulp test",
     "test-mocha": "mocha algorithm/*.spec.js es6/*.spec.js",
     "watch": "npm-watch",
-    "prebuild": "rimraf dist"
+    "prebuild": "rimraf dist",
+    "debug": "karma start karma.conf.js"
   },
   "keywords": [],
   "author": "",

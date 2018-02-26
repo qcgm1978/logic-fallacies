@@ -22,7 +22,7 @@ describe("es6", function () {
         unhandle = () => {
             expect(true).toBeFalsy()
         }
-        let reject = Promise.reject(new Error('Explosion'))
+        // let reject = Promise.reject(new Error('Explosion'))
     });
     it('returning values or Promises in promise chainings', () => {
         const promise = new Promise((resolve, reject) => {
