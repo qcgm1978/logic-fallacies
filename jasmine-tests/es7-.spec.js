@@ -3,7 +3,7 @@ describe('es7', () => {
     it('RegExp Named Capture Groups', () => {
         const userAgent = /headlessChrome\/(\S+)/i.exec(navigator.userAgent)
         expect('64').toBeGreaterThan(63)
-        if (/\d+/.exec(userAgent[1])[0] > 63) {
+        if (userAgent && /\d+/.exec(userAgent[1])[0] > 63) {
 
             //ES2018: RegExp named capture groups. Not Support now.
             expect(() => /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/).not.toThrowError(SyntaxError);
@@ -285,6 +285,24 @@ describe('Asynchronous iteration', () => {
         ab.next().then((x) => {
 
             expect(x).toMatch(/b/);
-        })
+        });
+        async function main() {
+            for await (const x of ['c', 'd']) {
+                expect(x).toMatch(/c|d/);
+            }
+        }
+        main();
+    });
+    it('Queuing next() invocations', () => {
+        (async function* f() {
+            const asyncGenObj = createAsyncIterable(['a', 'b']);
+            const [{ value: v1 }, { value: v2 }] = await Promise.all([
+                asyncGenObj.next(), asyncGenObj.next()
+            ]);
+            expect([v1, v2]).toEqual(); // a b
+        })()
+    });
+    it('test debug', () => {
+        'I\'m breakpoint';
     })
 })

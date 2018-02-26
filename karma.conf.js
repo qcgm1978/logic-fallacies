@@ -60,18 +60,25 @@ module.exports = function (config) {
 
 
         // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: false,
+        autoWatch: true,
 
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         // browsers: ['ChromeHeadless'],
         // browsers:['Chrome'],
-        browsers: ['ChromeHeadless_without_security'],
+        browsers: [
+            'ChromeDebugging'
+        ],
+        // browsers: ['ChromeHeadless_without_security'],
         customLaunchers: {
-            ChromeHeadless_without_security: {
-                base: 'ChromeHeadless',
-                flags: ['--disable-web-security']
+            // ChromeHeadless_without_security: {
+            //     base: 'ChromeHeadless',
+            //     flags: ['--disable-web-security','--remote-debugging-port=9333']
+            // }
+            ChromeDebugging: {
+                base: 'Chrome',
+                flags: ['--remote-debugging-port=9333']
             }
         },
         browserNoActivityTimeout: 60000,
