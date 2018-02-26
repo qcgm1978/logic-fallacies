@@ -30,3 +30,13 @@ async function* createAsyncIterable(syncIterable) {
 		yield elem;
 	}
 }
+async function* abAsync() {
+	const asyncIterable = [
+		Promise.resolve('a'),
+		Promise.resolve('b'),
+	];
+	for (const elem of asyncIterable) {
+		yield elem;
+	}
+	
+}

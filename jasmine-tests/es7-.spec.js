@@ -226,15 +226,65 @@ describe('Asynchronous iteration', () => {
         const asyncIterator = asyncIterable[Symbol.asyncIterator]();
         expect(asyncIterator.next()
             .then(iterResult1 => {
-                console.log(iterResult1); // { value: 'a', done: false }
+                expect(iterResult1).toEqual({ value: 'a', done: false }); // 
                 return asyncIterator.next();
             })
             .then(iterResult2 => {
-                console.log(iterResult2); // { value: 'b', done: false }
+                expect(iterResult2).toEqual({ value: 'b', done: false }); // 
                 return asyncIterator.next();
             })
             .then(iterResult3 => {
-                console.log(iterResult3); // { value: undefined, done: true }
+                expect(iterResult3).toEqual({ value: undefined, done: true }); //
             }).then instanceof Function).toBeTruthy()
+        async function f() {
+            const asyncIterable = createAsyncIterable(['a', 'b']);
+            const asyncIterator = asyncIterable[Symbol.asyncIterator]();
+            expect(await asyncIterator.next()).toEqual({ value: 'a', done: false });
+            // { value: 'a', done: false }
+            expect(await asyncIterator.next()).toEqual({ value: 'b', done: false });
+            // { value: 'b', done: false }
+            expect(await asyncIterator.next()).toEqual({ value: undefined, done: true });
+            // { value: undefined, done: true }
+        }
+        f()
+    });
+    it('for-await-of and rejections', () => {
+        function createRejectingIterable() {
+            return {
+                [Symbol.asyncIterator]() {
+                    return this;
+                },
+                next() {
+                    return Promise.reject(new Error('Problem!'));
+                },
+            };
+        }
+        (async function () { // (A)
+            try {
+                for await (const x of createRejectingIterable()) {
+                    expect(x);
+                }
+            } catch (e) {
+                expect(e instanceof Error).toBeTruthy();
+                expect(e.message).toBe('Problem!')
+                // Error: Problem!
+            }
+        })(); // (B)
+        async function main() {
+            const syncIterable = [
+                Promise.resolve('a'),
+                Promise.resolve('b'),
+            ];
+            for await (const x of syncIterable) {
+                expect(x).toMatch(/a|b/);
+            }
+        }
+        main();
+        const ab = abAsync();
+        expect(ab.next().then instanceof Function).toBeTruthy()
+        ab.next().then((x) => {
+
+            expect(x).toMatch(/b/);
+        })
     })
 })
