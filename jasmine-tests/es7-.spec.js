@@ -1,4 +1,5 @@
 describe('es7', () => {
+
     it('RegExp Named Capture Groups', () => {
         const userAgent = /headlessChrome\/(\S+)/i.exec(navigator.userAgent)
         expect('64').toBeGreaterThan(63)
@@ -206,5 +207,34 @@ describe('es8', () => {
         expect(z).toEqual({ a: 3, b: 4 });
         let n = { x, y, ...z };
         expect(n).toEqual({ x: 1, y: 2, a: 3, b: 4 })
+    })
+
+
+
+
+
+})
+describe('Asynchronous iteration', () => {
+    it('Synchronous iteration', () => {
+        const iterable = ['a', 'b'], iterator = iterable[Symbol.iterator]()
+        expect(iterator.next()).toEqual({ value: 'a', done: false })
+        expect(iterator.next()).toEqual({ value: 'b', done: false })
+        expect(iterator.next()).toEqual({ value: undefined, done: true })
+    });
+    it('Function createAsyncIterable() is explained later. It converts its synchronously iterable parameter into an async iterable.', () => {
+        const asyncIterable = createAsyncIterable(['a', 'b']);
+        const asyncIterator = asyncIterable[Symbol.asyncIterator]();
+        expect(asyncIterator.next()
+            .then(iterResult1 => {
+                console.log(iterResult1); // { value: 'a', done: false }
+                return asyncIterator.next();
+            })
+            .then(iterResult2 => {
+                console.log(iterResult2); // { value: 'b', done: false }
+                return asyncIterator.next();
+            })
+            .then(iterResult3 => {
+                console.log(iterResult3); // { value: undefined, done: true }
+            }).then instanceof Function).toBeTruthy()
     })
 })

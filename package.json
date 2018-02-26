@@ -5,10 +5,15 @@
   "main": "src/index.js",
   "chromium-args": "--enable-logging=stderr",
   "watch": {
-    "test": "jasmine-tests/*.js"
+    "test": {
+      "patterns": [
+        "jasmine-tests/*.js",
+        "jasmine-www/**/*.js"
+      ]
+    }
   },
   "scripts": {
-    "start":"npm run watch",
+    "start": "npm run watch",
     "test-karma": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
     "test": "gulp test",
     "test-mocha": "mocha algorithm/*.spec.js es6/*.spec.js",

@@ -6,11 +6,11 @@
  *    defaulting to "default" and 0, or null if the JSON is null or invalid.
  */
 function normalizeData(jsonIn) {
-    data = JSON.parse(jsonIn);
-    return {
-        name: data.Name,
-        id: data.PersonalIdentifier
-    };
+	data = JSON.parse(jsonIn);
+	return {
+		name: data.Name,
+		id: data.PersonalIdentifier
+	};
 }
 var WeatherService = {
 	fetchCurrentTemperature: fetchCurrentTemperature
@@ -18,10 +18,15 @@ var WeatherService = {
 
 function fetchCurrentTemperature() {
 	return fetch('someweatherapi.com')
-		.then(function(response) {
+		.then(function (response) {
 			return response.json();
 		})
-		.then(function(data) {
+		.then(function (data) {
 			return data.temperature;
 		});
+}
+async function* createAsyncIterable(syncIterable) {
+	for (const elem of syncIterable) {
+		yield elem;
+	}
 }
