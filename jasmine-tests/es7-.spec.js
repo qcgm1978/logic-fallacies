@@ -81,8 +81,8 @@ describe('es8', () => {
             throw new Error('Problem!');
         }
 
-        asyncFunc()
-            .catch(err => expect(err).toThrowError(Error));
+        // asyncFunc()
+        // .catch(err => expect(err).toThrowError(Error));
         async function asyncFunc() {
             const result = await asyncFunc1();
             expect(result).toThrowError();
@@ -294,13 +294,11 @@ describe('Asynchronous iteration', () => {
         main();
     });
     it('Queuing next() invocations', () => {
-        (async function* f() {
-            const asyncGenObj = createAsyncIterable(['a', 'b']);
-            const [{ value: v1 }, { value: v2 }] = await Promise.all([
-                asyncGenObj.next(), asyncGenObj.next()
-            ]);
-            expect([v1, v2]).toEqual(); // a b
-        })()
+        const asyncGenObj = createAsyncIterable(['a', 'b']);
+        asyncGenObj.next().then(data => {
+
+            expect(data).toEqual({ value: "a", done: false }); // a b
+        })
     });
     it('test debug', () => {
         'I\'m breakpoint';
