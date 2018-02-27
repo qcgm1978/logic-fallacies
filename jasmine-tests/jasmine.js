@@ -12,6 +12,8 @@ describe('Global', () => {
     })
 })
 describe('Following these rules, the code development steps are:', () => {
+
+
     it('Write a little test that doesn’t work', () => {
         expect(expect(false).toBeTruthy).toThrow()
     });
@@ -43,5 +45,50 @@ describe('Following these rules, the code development steps are:', () => {
         expect(fibonacci(2)).toEqual(1);
         expect(fibonacci(-2)).toEqual(-1);
         expect(fibonacci(NaN)).toEqual(NaN)
-    })
+    });
+    it('Black-Box Testing', () => {
+        class StaticMethodCall {
+            constructor() {
+                // console.log(StaticMethodCall.staticMethod());
+                // expected output: "static method has been called."
+                // 5
+            }
+            callable() {
+                return true
+            }
+            static staticMethod() {
+                return 'static method has been called.';
+            }
+        }
+        const ins = new StaticMethodCall();
+        expect(ins.callable()).toBeTruthy()
+        expect(ins.staticMethod).toBeUndefined()
+    });
+
 })
+
+
+
+
+describe('Hello world', function () {
+
+    beforeEach(function () {
+        jasmine.addMatchers({
+            toBeLarge: function () {
+                return {
+                    compare: function (actual, expected) {
+                        return {
+                            pass: actual > 100
+                        };
+                    }
+                };
+            }
+        });
+    });
+
+    it('Custom Matchers', function () {
+        expect(5).not.toBeLarge();       // failure
+        expect(200).toBeLarge();     // success
+        expect(12).not.toBeLarge();  // success
+    })
+});

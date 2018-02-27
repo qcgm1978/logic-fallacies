@@ -4,23 +4,23 @@ describe('es6 features', () => {
         const year = new Date().getFullYear(), arr = Array(5);
         arr.should.instanceof(Array);
         arr.length.should.equal(5);
-        arr.should.eql([,,,,,]);
+        arr.should.eql([, , , , ,]);
         year.should.equal(2018)
-        const web=Array.from('web')
-        web.should.eql(['w','e','b']);
-        Array.from(Array(5),(_,i)=>year+i+1).should.eql([2019,2020,2021,2022,2023])
+        const web = Array.from('web')
+        web.should.eql(['w', 'e', 'b']);
+        Array.from(Array(5), (_, i) => year + i + 1).should.eql([2019, 2020, 2021, 2022, 2023])
     });
     it(' Swap variables', () => {
         var a = 'world', b = 'hello';
         [a, b] = [b, a];
-        console.log(a)
+        // console.log(a)
         a.should.equal('hello')
         b.should.equal('world')
     });
     it('Async/Await with Destructuring', () => {
         async function callX() {
             let x_value = await x();
-            console.log(x_value);
+            // console.log(x_value);
         }
     });
     it('Debugging', () => {
@@ -56,11 +56,11 @@ describe('es6 features', () => {
         arr.should.eql(oldArr)
     });
     it('for..in and for...of', () => {
-        (()=>{
-            for(const p of {a:1}){}
+        (() => {
+            for (const p of { a: 1 }) { }
         }).should.throw();
-        (()=>{
-            for(const p in null){}
+        (() => {
+            for (const p in null) { }
         }).should.not.throw();
     })
 })

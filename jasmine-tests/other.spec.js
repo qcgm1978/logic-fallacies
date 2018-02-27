@@ -40,4 +40,35 @@ describe('Star Wars', () => {
         const originalTrilogy = ['A New Hope', 'The Empire Strikes Back', 'Return of the Jedi',], prequelTrilogy = ['The Phantom Menace', 'Attack of the clones', 'Revenge of the Sith'], sequelTrilogy = ['The force Awakens', 'The Last Jedi', '']
         expect(originalTrilogy.concat(prequelTrilogy, sequelTrilogy).length).toBe(9)
     })
+});
+describe('Munsell Color System', () => {
+    it(' For this reason alone the system proposed by Mr. Munsell, with its three dimensions of hue, value, and chroma, is a decided step in advance over any previous proposition', () => {
+        const MunsellColSys = ['hue', 'value', 'chroma'], hue = 'hue', value = 'value', chroma = 'chroma';
+        expect(MunsellColSys).toContain(hue);
+    })
+});
+describe('Color', () => {
+    beforeAll(function () {
+        jasmine.addMatchers({
+            toBeInRange: function () {
+                return {
+                    compare: function (actual, expected) {
+                        return {
+                            pass: actual >= expected[0] && actual <= expected[1]
+                        };
+                    }
+                };
+            }
+        });
+    })
+    it('This perception of color derives from the stimulation of cone cells in the human eye by electromagnetic radiation in the spectrum of light', () => {
+        // peaking near 564–580 nm(red); medium - wavelength, peaking near 534–545 nm(green); and short - wavelength light, near 420–440 nm(blue).
+        const threeBandsLight = [[564, 580], [534, 545], [420, 440]], red = 570, green = 540, blue = 430;
+        expect(red).toBeLessThan(threeBandsLight[0][1]);
+        expect(red).toBeGreaterThan(threeBandsLight[0][0]);
+        expect(red).toBeInRange(threeBandsLight[0]);
+    });
+    it(`A viewer's perception of the object's color depends not only on the spectrum of the light leaving its surface, but also on a host of contextual cues, so that color differences between objects can be discerned mostly independent of the lighting spectrum, viewing angle, etc. This effect is known as color constancy.`, () => {
+
+    })
 })

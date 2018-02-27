@@ -5,7 +5,7 @@ describe(' Intro to Chrome User Experience Report', () => {
             effectiveType = navigator.connection.effectiveType;
         !navigator.userAgent && expect(rtt).toEqual(0);
         expect(downlink).toBeGreaterThan(0.);
-        expect(effectiveType).toEqual('4g');
+        expect(effectiveType).toMatch(/2g|3g|4g/);
         // expect(navigator.onLine).toBeTruthy()
 
     });
@@ -39,4 +39,4 @@ describe(' Intro to Chrome User Experience Report', () => {
         expect(worker.postMessage('Hello World')).toEqual(undefined);
 
     })
-})
+});
