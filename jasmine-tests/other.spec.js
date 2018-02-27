@@ -47,7 +47,22 @@ describe('Munsell Color System', () => {
         expect(MunsellColSys).toContain(hue);
     })
 });
-describe('Color', () => {
+describe(`Color:Physics of color
+1.1	Spectral colors
+1.2	Color of objects
+2	Perception
+2.1	Development of theories of color vision
+2.2	Color in the eye
+2.3	Color in the brain
+2.4	Nonstandard color perception
+2.5	Afterimages
+2.6	Color constancy
+2.7	Color naming
+2.8	Associations
+3	Spectral colors and color reproduction
+3.1	Additive coloring
+3.2	Subtractive coloring
+3.3	Structural color`, () => {
     beforeAll(function () {
         jasmine.addMatchers({
             toBeInRange: function () {
@@ -61,14 +76,18 @@ describe('Color', () => {
             }
         });
     })
-    it('This perception of color derives from the stimulation of cone cells in the human eye by electromagnetic radiation in the spectrum of light', () => {
+    it('Spectral colors: This perception of color derives from the stimulation of cone cells in the human eye by electromagnetic radiation in the spectrum of light', () => {
         // peaking near 564–580 nm(red); medium - wavelength, peaking near 534–545 nm(green); and short - wavelength light, near 420–440 nm(blue).
         const threeBandsLight = [[564, 580], [534, 545], [420, 440]], red = 570, green = 540, blue = 430;
         expect(red).toBeLessThan(threeBandsLight[0][1]);
         expect(red).toBeGreaterThan(threeBandsLight[0][0]);
         expect(red).toBeInRange(threeBandsLight[0]);
     });
+    it('')
     it(`A viewer's perception of the object's color depends not only on the spectrum of the light leaving its surface, but also on a host of contextual cues, so that color differences between objects can be discerned mostly independent of the lighting spectrum, viewing angle, etc. This effect is known as color constancy.`, () => {
 
-    })
+    });
+    it(``, () => {
+
+        })
 })

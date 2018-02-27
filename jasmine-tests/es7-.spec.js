@@ -207,8 +207,30 @@ describe('es8', () => {
         expect(z).toEqual({ a: 3, b: 4 });
         let n = { x, y, ...z };
         expect(n).toEqual({ x: 1, y: 2, a: 3, b: 4 })
+    });
+    it('The rest operator (...) in object destructuring', () => {
+        const obj = { foo: 1, bar: 2, baz: 3 };
+        const { foo, ...rest } = obj;
+        expect(foo).toEqual(1)
+        expect(rest).toEqual({ bar: 2, baz: 3 });
+        (function func({ param1, param2, ...rest }) { // rest operator
+            expect(rest).toEqual({ param3: 3, param4: 4 }); // spread operator
+            return param1 + param2;
+        })({ param1: 1, param2: 2, param3: 3, param4: 4 });
+        const obj1 = {
+            foo1: {
+                a: 1,
+                b: 2,
+                c: 3,
+            },
+            bar: 4,
+            baz: 5,
+        };
+        const { foo1: { a, ...rest1 }, ...rest2 } = obj1;
+        expect(a).toEqual(1);
+        expect(rest1).toEqual({ b: 2, c: 3 })
+        expect(rest2).toEqual({ bar: 4, baz: 5 })
     })
-
 
 
 
@@ -303,4 +325,4 @@ describe('Asynchronous iteration', () => {
     it('test debug', () => {
         'I\'m breakpoint';
     })
-})
+});
