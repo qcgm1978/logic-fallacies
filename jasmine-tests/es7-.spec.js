@@ -298,7 +298,13 @@ describe('Asynchronous iteration', () => {
         asyncGenObj.next().then(data => {
 
             expect(data).toEqual({ value: "a", done: false }); // a b
-        })
+        });
+        (async function foo() {
+            const writer = openFile('someFile.txt');
+            writer.next('hello'); // don’t wait
+            writer.next('world'); // don’t wait
+            await writer.return(); // wait for file to close
+        })()
     });
     it('test debug', () => {
         'I\'m breakpoint';
