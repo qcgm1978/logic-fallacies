@@ -28,7 +28,7 @@ describe('js feature', () => {
     http.createServer.should.instanceof(Function)
     new Promise((resolve, reject) => {
       http.createServer((request, response) => {
-        console.log('Server running on http://localhost:3000');
+        // console.log('Server running on http://localhost:3000');
       }).listen(3000);
 
     }).then(({ request, response }) => {

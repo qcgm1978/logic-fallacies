@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Specification</th>
+                <th scope="col">RGB equivalent</th>
+                <th scope="col">Keyword</th>
+                <th scope="col">RGB hex value</th>
+                <th scope="col">Live keyword</th>
+            </tr>
+        </thead>
+        <tr style="position: relative;">
+
+            <td style="background: #000;">&nbsp;</td>
+            <td style="text-align: center;">
+                <code>black</code>
+            </td>
+            <td>
+                <code>#000000</code>
+            </td>
+            <td style="background: black;">&nbsp;</td>
+        </tr>
+    </table>
+    <script src="../../node_modules\jquery\dist\jquery.js"></script>
+    <script src="../scripts/colors.js"></script>
+    <script>
+        let arr = colors.split(/\n/).slice(1);
+        arr = arr.map((val, ind) => {
+            return val.trim().split(/\s+/);
+        });
+        const getRandomInt = (min, max) => {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        let i = getRandomInt(0, 150)
+        $('tr td:first').add('tr td:last').css('background-color', arr[i][0]).end().next().find('code').text(arr[i][0])
+        // todo request google translate api
+        $('tr td:last').text('translate text')
+        $('tr td:eq(2) code').text(arr[i][1])
+        debugger;
+    </script>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-- >
+
+</body >
+
+</html >

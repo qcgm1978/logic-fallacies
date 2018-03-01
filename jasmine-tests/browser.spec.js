@@ -5,7 +5,7 @@ describe(' Intro to Chrome User Experience Report', () => {
             effectiveType = navigator.connection.effectiveType;
         !navigator.userAgent && expect(rtt).toEqual(0);
         expect(downlink).toBeGreaterThan(0.);
-        expect(effectiveType).toEqual('4g');
+        expect(effectiveType).toMatch(/2g|3g|4g/);
         // expect(navigator.onLine).toBeTruthy()
 
     });
@@ -38,5 +38,23 @@ describe(' Intro to Chrome User Experience Report', () => {
         }, false);
         expect(worker.postMessage('Hello World')).toEqual(undefined);
 
+    })
+});
+describe('devtools', () => {
+    it('Timing breakdown phases explained', () => {
+        `Queueing.The browser queues requests when:
+        There are higher priority requests.
+        There are already six TCP connections open for this origin, which is the limit.Applies to HTTP / 1.0 and HTTP / 1.1 only.
+        The browser is briefly allocating space in the disk cache
+        Stalled.The request could be stalled for any of the reasons described in Queueing.
+        DNS Lookup.The browser is resolving the request's IP address.
+        Proxy negotiation.The browser is negotiating the request with a proxy server.
+        Request sent.The request is being sent.
+        ServiceWorker Preparation.The browser is starting up the service worker.
+        Request to ServiceWorker.The request is being sent to the service worker.
+            Waiting(TTFB).The browser is waiting for the first byte of a response.TTFB stands for Time To First Byte.This timing includes 1 round trip of latency and the time the server took to prepare the response.
+        Content Download.The browser is receiving the response.
+        Receiving Push.The browser is receiving data for this response via HTTP / 2 Server Push.
+        Reading Push.The browser is reading the local data previously received.`
     })
 })

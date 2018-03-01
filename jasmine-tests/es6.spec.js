@@ -17,7 +17,7 @@ describe("es6", function () {
     });
     it('Browser unhandled rejection', () => {
         let unhandle = window.onunhandledrejection;
-        console.log(unhandle)
+        // console.log(unhandle)
         expect(typeof unhandle).toEqual('object');
         unhandle = () => {
             expect(true).toBeFalsy()
@@ -30,7 +30,7 @@ describe("es6", function () {
         }), promise1 = new Promise(resolve => {
             resolve(0)
         }), reject = new Promise((_, reject) => {
-            reject(new Error())
+            // reject(new Error())
         });
         promise.then((data) => {
             expect(data).toEqual(42);
@@ -52,7 +52,7 @@ describe("es6", function () {
             expect(data).toEqual([42, 43, 44])
         });
         p2 = new Promise((resolve, reject) => {
-            reject(0)
+            // reject(0)
         })
         Promise.all([p1, p2, p3]).catch(data => {
             expect(data).toEqual(0)
@@ -66,7 +66,7 @@ describe("es6", function () {
             expect(data).toEqual(43)
         });
         p2 = new Promise((resolve, reject) => {
-            reject(0)
+            // reject(0)
         })
         Promise.race([p1, p2, p3]).catch(data => {
             expect(data).toEqual(0)
