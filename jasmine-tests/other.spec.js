@@ -63,31 +63,40 @@ describe(`Color:Physics of color
 3.1	Additive coloring
 3.2	Subtractive coloring
 3.3	Structural color`, () => {
-    beforeAll(function () {
-        jasmine.addMatchers({
-            toBeInRange: function () {
-                return {
-                    compare: function (actual, expected) {
-                        return {
-                            pass: actual >= expected[0] && actual <= expected[1]
-                        };
-                    }
-                };
-            }
-        });
-    })
-    it('Spectral colors: This perception of color derives from the stimulation of cone cells in the human eye by electromagnetic radiation in the spectrum of light', () => {
-        // peaking near 564–580 nm(red); medium - wavelength, peaking near 534–545 nm(green); and short - wavelength light, near 420–440 nm(blue).
-        const threeBandsLight = [[564, 580], [534, 545], [420, 440]], red = 570, green = 540, blue = 430;
-        expect(red).toBeLessThan(threeBandsLight[0][1]);
-        expect(red).toBeGreaterThan(threeBandsLight[0][0]);
-        expect(red).toBeInRange(threeBandsLight[0]);
-    });
-    it('')
-    it(`A viewer's perception of the object's color depends not only on the spectrum of the light leaving its surface, but also on a host of contextual cues, so that color differences between objects can be discerned mostly independent of the lighting spectrum, viewing angle, etc. This effect is known as color constancy.`, () => {
-
-    });
-    it(``, () => {
-
+        beforeAll(function () {
+            jasmine.addMatchers({
+                toBeInRange: function () {
+                    return {
+                        compare: function (actual, expected) {
+                            return {
+                                pass: actual >= expected[0] && actual <= expected[1]
+                            };
+                        }
+                    };
+                }
+            });
         })
-})
+        it('Spectral colors: This perception of color derives from the stimulation of cone cells in the human eye by electromagnetic radiation in the spectrum of light', () => {
+            // peaking near 564–580 nm(red); medium - wavelength, peaking near 534–545 nm(green); and short - wavelength light, near 420–440 nm(blue).
+            const threeBandsLight = [[564, 580], [534, 545], [420, 440]], red = 570, green = 540, blue = 430;
+            expect(red).toBeLessThan(threeBandsLight[0][1]);
+            expect(red).toBeGreaterThan(threeBandsLight[0][0]);
+            expect(red).toBeInRange(threeBandsLight[0]);
+        });
+        it('')
+        it(`A viewer's perception of the object's color depends not only on the spectrum of the light leaving its surface, but also on a host of contextual cues, so that color differences between objects can be discerned mostly independent of the lighting spectrum, viewing angle, etc. This effect is known as color constancy.`, () => {
+
+        });
+        it(`Color keywords are case-insensitive identifiers that represent a specific color`, () => {
+            const arr = colors.split(/\n/);
+            expect(arr.length).toBe(151);
+            expect([' 	midnightblue	#191970	 '].includes(' 	midnightblue	#191970	 ')).toBeTruthy();
+
+            expect(arr.includes(' 	midnightblue	#191970	 ')).toBeTruthy()
+            expect(' 	midnightblue	#191970	 '.trim().split(/\s+/)).toEqual(['midnightblue', '#191970']);
+            const midnightblue = ['midnightblue', '#191970'];
+            expect({
+                [midnightblue[0]]: midnightblue[1]
+            }.midnightblue).toBe('#191970')
+        })
+    })
