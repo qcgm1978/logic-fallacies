@@ -57,4 +57,31 @@ describe('devtools', () => {
         Receiving Push.The browser is receiving data for this response via HTTP / 2 Server Push.
         Reading Push.The browser is reading the local data previously received.`
     })
+});
+describe('API', () => {
+    it('url.searchParams', () => {
+        const url = new URL('http://glodon.com?foo=bar')
+        expect(url.searchParams).toBeDefined()
+        expect(url.searchParams.get('foo')).toBe('bar')
+        url.searchParams.set('hello', 'world')
+        expect(url.href).toBe('http://glodon.com/?foo=bar&hello=world');
+        const params = new URLSearchParams()
+        params.set('hello', 'world')
+        expect(params.toString()).toBe('hello=world')
+        const body = new URLSearchParams();
+        const request = new Request('/', {
+            body,
+            method: 'post'
+        })
+        expect(request.headers.get('content-type')).toBe('application/x-www-form-urlencoded;charset=UTF-8')
+        const urlNew = new URL('http://foo'), obj = { foo: 'bar', world: 'ends' }
+        for (const key of Object.keys(obj)) {
+            urlNew.searchParams.set(`hello[${key}]`, obj[key])
+
+        }
+        expect(decodeURIComponent(urlNew.href)).toBe('http://foo/?hello[foo]=bar&hello[world]=ends')
+    });
+    it('Request', () => {
+        const request = new Request('http://www.google.com')
+    })
 })

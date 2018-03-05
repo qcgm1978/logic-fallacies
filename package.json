@@ -19,7 +19,9 @@
     "test-mocha": "mocha algorithm/*.spec.js es6/*.spec.js",
     "watch": "npm-watch",
     "prebuild": "rimraf dist",
-    "debug": "karma start karma.conf.js"
+    "debug": "karma start karma.conf.js",
+    "record": "asciinema rec",
+    "play": "asciinema play  /var/folders/d1/zt67_99s5xj9spfdqtjhpx4h0000gn/T/tmp0ccjx_av-ascii.cast"
   },
   "keywords": [],
   "author": "",
