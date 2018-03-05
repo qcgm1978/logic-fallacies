@@ -28,19 +28,20 @@ describe('es7', () => {
         expect(arr.includes(1)).toBeTruthy();
         expect(arr.includes(1, 1)).toBeFalsy()
     });
-    it('object.values', () => {
+    it('Object.values', () => {
         var obj = { a: 1, b: 2, c: 3 };
         var expected = [1, 2, 3];
 
-        if (typeof Symbol === 'function' && typeof Symbol() === 'symbol') {
-            // for environments with Symbol support
-            var sym = Symbol();
-            obj[sym] = 4;
-            obj.d = sym;
-            expected.push(sym);
-        }
+        // if (typeof Symbol === 'function' && typeof Symbol() === 'symbol') {
+        // for environments with Symbol support
+        var sym = Symbol();
+        obj[sym] = 4;
+        obj.d = sym;
+        expected.push(sym);
+        // }
 
-        expect(Object.values(obj)).toEqual(expected)
+        expect(Object.values(obj)).toEqual(expected);
+        expect(expected).not.toEqual([1, 2, 3, Symbol()])
     })
 });
 describe('es8', () => {
@@ -176,18 +177,23 @@ describe('es8', () => {
             [Symbol('foo')]: 123,
             get bar() { return 'abc' },
         };
-        // expect(Object.getOwnPropertyDescriptors(obj))
-        // .toEqual( { [Symbol('foo')]:{ value: 123,
-        //     writable: true,
-        //     enumerable: true,
-        //     configurable: true },
-        //  bar:
-        //   { get: [Function: bar],
-        //     set: undefined,
-        //     enumerable: true,
-        //     configurable: true } });
+        expect(Object.getOwnPropertyDescriptors(obj))
+        not.toEqual({
+            [Symbol('foo')]: {
+                value: 123,
+                writable: true,
+                enumerable: true,
+                configurable: true
+            },
+            bar:
+                {
+                    get: [function bar() { }],
+                    set: undefined,
+                    enumerable: true,
+                    configurable: true
+                }
+        });
 
-        // Output:
 
     });
     it('Trailing commas in function parameters list and calls', () => {

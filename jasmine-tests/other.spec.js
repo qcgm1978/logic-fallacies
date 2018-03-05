@@ -121,7 +121,32 @@ describe('Short Coding', () => {
 
             i < m ? (times++ , ++i) : (times++ , ++j);
         }
+        expect(times).toBe(7);
+        times = 0;
+        for (i = j = 0; i < m ? (times++ , ++i) : j < n ? (times++ , ++j) : 0;);
         expect(times).toBe(7)
+    });
+    it('nested loop', () => {
+        const char = ["ABC", "DEF", "GHI", "JKL"]
+
+        let i, j, times = times1 = 0;
+        const m = 4, n = 3;
+
+        for (i = 0; i < m; ++i) {
+
+            times++;
+            for (j = 0; j < n; ++j) {
+                times1++
+            }
+        }
+        expect(times).toBe(4)
+        expect(times1).toBe(12);
+        times = times1 = 0;
+        for (i = 0, j = 0; i < m;) {
+            j < n ? (times1++ , j++) : (times++ , j = 0, ++i);
+        }
+        expect(times).toBe(4)
+        expect(times1).toBe(12);
     })
 
 })

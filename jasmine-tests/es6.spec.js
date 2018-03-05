@@ -2,10 +2,12 @@
 // appear in test reports. The second argument is a callback containing the individual tests.
 describe("es6", function () {
 
+
     // The 'it' function of Jasmine defined an individual test. The first argument is
     // a description of the test that's appended to the module name. Because a module name
     // is typically a noun, like the name of the function being tested, the description for
     // an individual test is typically written in an action-data format. 
+
     it("accepts golden path data", function () {
         // Invoke the unit being tested as necessary
         var json = '{"Name": "Maria", "PersonalIdentifier": 2111858}';
@@ -187,5 +189,31 @@ describe('block bindings', () => {
             let val = 1;
         }
         expect(val).toBeUndefined()
+    })
+});
+describe('Symbol', () => {
+    it('The data type "symbol" is a primitive data type having the quality that, values of this type can be used to make object properties that are anonymous', () => {
+        const myPrivateMethod = Symbol();
+        let obj = { a: 1 }
+        expect(obj).toEqual({ a: 1 })
+
+        obj[myPrivateMethod] = function () { };
+        expect(obj).toEqual({ a: 1 })
+    });
+    it(`The method Symbol.for("tokenString") returns a symbol value from the registry, and Symbol.keyFor(symbolValue) returns a token string from the registry; each is the other's inverse`, () => {
+        expect(Symbol.keyFor(Symbol.for("tokenString"))).toBe("tokenString");  // true
+    });
+    it(`Symbol type is a new feature in ECMAScript 2015 and there is no ECMAScript 5 equivalent for symbol.`, () => {
+        expect(Symbol("foo")).not.toEqual(Symbol("foo"))
+        const foo = Symbol()
+        const bar = Symbol()
+        expect(typeof foo === "symbol").toBeTruthy()
+        let obj = { a: 1 }
+        obj[foo] = "foo"
+        obj[bar] = "bar"
+        expect(JSON.stringify(obj)).toEqual(`{"a":1}`);
+        expect(Object.keys(obj)).toEqual(['a']);
+        expect(Object.getOwnPropertyNames(obj)).toEqual(['a'])
+        expect(Object.getOwnPropertySymbols(obj)).not.toEqual([Symbol(), Symbol()])
     })
 })
