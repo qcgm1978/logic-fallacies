@@ -38,6 +38,8 @@
         </tr>
     </table>
     <script src="../../node_modules\jquery\dist\jquery.js"></script>
+    <script src="../../src/require.js"></script>
+    <script src="..\..\node_modules\google-translate-api\index.js"></script>
     <script src="../scripts/colors.js"></script>
     <script>
         let arr = colors.split(/\n/).slice(1);
@@ -53,6 +55,14 @@
         $('tr td:last').text('translate text')
         $('tr td:eq(2) code').text(arr[i][1])
         debugger;
+        translate('Ik spreek Engels', { to: 'en' }).then(res => {
+            console.log(res.text);
+            //=> I speak English
+            console.log(res.from.language.iso);
+            //=> nl
+        }).catch(err => {
+            console.error(err);
+        });
     </script>
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
