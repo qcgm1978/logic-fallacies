@@ -99,4 +99,29 @@ describe(`Color:Physics of color
                 [midnightblue[0]]: midnightblue[1]
             }.midnightblue).toBe('#191970')
         })
+    });
+describe('Short Coding', () => {
+    it('seperated loops', () => {
+        const char = ["ABC", "DEF", "GHI", "JKL"]
+
+        let i, j, times = 0;
+        const m = 4, n = 3;
+
+        for (i = 0; i < m; ++i) {
+
+            times++;
+        }
+        expect(times).toBe(4)
+        for (j = 0; j < n; ++j) {
+            times++
+        }
+        expect(times).toBe(7);
+        times = 0;
+        for (i = j = 0; i < m || j < n;) {
+
+            i < m ? (times++ , ++i) : (times++ , ++j);
+        }
+        expect(times).toBe(7)
     })
+
+})
