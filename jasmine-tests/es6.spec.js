@@ -215,5 +215,17 @@ describe('Symbol', () => {
         expect(Object.keys(obj)).toEqual(['a']);
         expect(Object.getOwnPropertyNames(obj)).toEqual(['a'])
         expect(Object.getOwnPropertySymbols(obj)).not.toEqual([Symbol(), Symbol()])
-    })
+    });
+    it(`Array.prototype.sort throws`, () => {
+        const sort = arr => {
+            return arr.sort((a, b) => {
+                return (typeof a === 'symbol') ? true : (typeof b === 'symbol') ? false : a > b;
+            });
+        }
+        expect([Symbol()].sort).toThrow();
+        expect([Symbol(), 'a'].sort).toThrow();
+        const arr = sort([Symbol('a'), 'c', 'a', Symbol('b')]);
+        expect(arr.length).toEqual(4);
+        expect(arr.slice(0, 2)).toEqual(['a', 'c']);
+    });
 })
