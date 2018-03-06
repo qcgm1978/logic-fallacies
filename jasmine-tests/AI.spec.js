@@ -1,6 +1,6 @@
 // const deepLearning = require('deeplearn')
 // import dl from 'deeplearn'; // If not loading the script as a global
-const dl=require('../jasmine-www/scripts/deeplearn')
+// const dl=require('../jasmine-www/scripts/deeplearn')
 describe('dl', () => {
     it('Let’s add a scalar value to a 1D Tensor. Deeplearn js supports broadcasting the value of scalar over all the elements in the tensor.', () => {
         const a = dl.tensor1d([1, 2, 3]);
