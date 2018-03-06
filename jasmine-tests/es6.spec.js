@@ -198,7 +198,7 @@ describe('Symbol', () => {
         expect(obj).toEqual({ a: 1 })
 
         obj[myPrivateMethod] = function () { };
-        expect(obj).not.toEqual({ a: 1 })
+        expect(obj).toEqual({ a: 1 })
     });
     it(`The method Symbol.for("tokenString") returns a symbol value from the registry, and Symbol.keyFor(symbolValue) returns a token string from the registry; each is the other's inverse`, () => {
         expect(Symbol.keyFor(Symbol.for("tokenString"))).toBe("tokenString");  // true
