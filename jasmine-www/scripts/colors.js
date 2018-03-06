@@ -1,4 +1,4 @@
-const colors = `
+colors = `
     black	#000000	 
  	silver	#c0c0c0	 
  	gray	#808080	 
@@ -148,4 +148,4 @@ const colors = `
  	wheat	#f5deb3	 
  	whitesmoke	#f5f5f5	 
  	yellowgreen	#9acd32	 
-    rebeccapurple	#663399`
+    rebeccapurple	#663399`;

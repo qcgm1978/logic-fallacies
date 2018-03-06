@@ -1,3 +1,5 @@
+// require('@std/esm')
+// import  colors from '../jasmine-www/scripts/colors';
 describe('others', () => {
     it('Calling a function before it’s been declared', () => {
         a()
@@ -24,7 +26,17 @@ describe('others', () => {
         expect(timeConvertMoney).toBeGreaterThan(650)
         expect(me + her + cigarette + supper + medicine + taxi + timeConvertMoney + happiness).toBeGreaterThan(total)
 
-    })
+    });
+    it('The __lookupGetter__ method returns the function bound as a getter to the specified property.',()=>{
+        var obj = {
+            get foo() {
+                return Math.random() > 0.5 ? 'foo' : 'bar';
+            }
+        };
+        expect(obj.__lookupGetter__('foo')).toMatch(/foo|bar/);
+        const func=Object.getOwnPropertyDescriptor(obj, "foo").get;
+        expect(func()).toMatch(/foo|bar/);
+    });
 });
 describe('Progressive Web App', () => {
     it(' It loads quickly, even on flaky networks, sends relevant push notifications, has an icon on the home screen, and loads as a top-level, full screen experience', () => {
