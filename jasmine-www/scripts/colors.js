@@ -37,7 +37,8 @@ const colors = `
 (synonym of aqua)	#00ffff	 
  	darkblue	#00008b	 
  	darkcyan	#008b8b	 
- 	darkgoldenrod	#b8860b	 
+	 darkgoldenrod	#b8860b	 
+	 
  	darkgray	#a9a9a9	 
  	darkgreen	#006400	 
  	darkgrey	#a9a9a9	 
