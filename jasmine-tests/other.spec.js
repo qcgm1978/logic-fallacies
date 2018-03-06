@@ -1,3 +1,4 @@
+const {colors}=require('../jasmine-www/scripts/colors')
 describe('others', () => {
     it('Calling a function before it’s been declared', () => {
         a()
@@ -129,7 +130,7 @@ describe('Short Coding', () => {
     it('nested loop', () => {
         const char = ["ABC", "DEF", "GHI", "JKL"]
 
-        let i, j, times = times1 = 0;
+        let i, j, times = 0, times1 = 0;
         const m = 4, n = 3;
 
         for (i = 0; i < m; ++i) {

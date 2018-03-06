@@ -1,8 +1,14 @@
 describe(' Intro to Chrome User Experience Report', () => {
     it('Network Information API', () => {
+        if (typeof navigator === 'undefined') {
+            return;
+        }
         const rtt = navigator.connection.rtt,
             downlink = navigator.connection.downlink,
             effectiveType = navigator.connection.effectiveType;
+        if (typeof navigator === 'undefined') {
+            return;
+        }
         !navigator.userAgent && expect(rtt).toEqual(0);
         expect(downlink).toBeGreaterThan(0.);
         expect(effectiveType).toMatch(/2g|3g|4g/);
@@ -10,6 +16,9 @@ describe(' Intro to Chrome User Experience Report', () => {
 
     });
     it('performance', () => {
+        if (typeof performance === 'undefined') {
+            return;
+        }
         const paint = performance.getEntriesByType('paint');
         expect(paint).toEqual([])
         paint.forEach(element => {
@@ -17,12 +26,18 @@ describe(' Intro to Chrome User Experience Report', () => {
         });
     });
     it('Test if Element Supports Attribute', () => {
+        if (typeof document === 'undefined') {
+            return;
+        }
         const elementSupportsAttribute = (element, attribute) => {
             return attribute in document.createElement(element);
         };
         elementSupportsAttribute("input", "inputmode") && expect(true).toBeFalsy()
     });
     it('Web Workers run in an isolated thread', () => {
+        if (typeof XMLHttpRequest === 'undefined') {
+            return;
+        }
         var http = new XMLHttpRequest();
         http.open('GET', 'task.js', false);
         http.send();
@@ -60,6 +75,9 @@ describe('devtools', () => {
 });
 describe('API', () => {
     it('url.searchParams', () => {
+        if (typeof URL === 'undefined') {
+            return;
+        }
         const url = new URL('http://glodon.com?foo=bar')
         expect(url.searchParams).toBeDefined()
         expect(url.searchParams.get('foo')).toBe('bar')
@@ -82,6 +100,21 @@ describe('API', () => {
         expect(decodeURIComponent(urlNew.href)).toBe('http://foo/?hello[foo]=bar&hello[world]=ends')
     });
     it('Request', () => {
+        if (typeof Request === 'undefined') {
+            return;
+        }
         const request = new Request('http://www.google.com')
     })
+})
+// Use Puppeteer in your tests:
+
+describe('Google', () => {
+    // beforeAll(async () => {
+    //     const page = await browser.newPage()
+    //     await page.goto('https://www.google.com.hk')
+    // })
+
+    // it('should display "google" text on page', async () => {
+    //     await expect(page).toMatch(/google/)
+    // })
 })
