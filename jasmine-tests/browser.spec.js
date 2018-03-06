@@ -84,4 +84,13 @@ describe('API', () => {
     it('Request', () => {
         const request = new Request('http://www.google.com')
     })
+});
+describe('Canvas', () => {
+    it('CanvasRenderingContext2D.fillRect() method', () => {
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'green';
+        ctx.fillRect(10, 10, 100, 100);
+        expect(ctx.canvas.height).toEqual(150);
+    })
 })

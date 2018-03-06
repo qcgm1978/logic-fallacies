@@ -15,7 +15,7 @@
   "scripts": {
     "start": "npm run watch",
     "test-karma": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
-    "test": "gulp test",
+    "test": "karma start karma.conf.js",
     "test-mocha": "mocha algorithm/*.spec.js es6/*.spec.js",
     "watch": "npm-watch",
     "prebuild": "rimraf dist",
