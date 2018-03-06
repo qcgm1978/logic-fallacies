@@ -13,6 +13,7 @@
     }
   },
   "scripts": {
+    "diff": "git diff debug jet -- jasmine-test/browser.spec.js",
     "start": "npm run watch",
     "test-karma": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
     "test": "karma start karma.conf.js",
