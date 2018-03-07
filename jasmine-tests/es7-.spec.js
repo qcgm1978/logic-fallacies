@@ -45,6 +45,22 @@ describe('es7', () => {
     })
 });
 describe('es8', () => {
+    describe('flatten', () => {
+        it('The flatten() method creates a new array with all sub-array elements concatted into it recursively up to the specified depth', () => {
+            if (Array.prototype.flatten === undefined) {
+                return;
+            }
+            var arr1 = [1, 2, [3, 4]];
+            arr1.flatten();
+            // [1, 2, 3, 4]
+            var arr2 = [1, 2, [3, 4, [5, 6]]];
+            arr2.flatten();
+            // [1, 2, 3, 4, [5, 6]]
+            var arr3 = [1, 2, [3, 4, [5, 6]]];
+            arr3.flatten(2);
+            // [1, 2, 3, 4, 5, 6]
+        })
+    })
     it('The Float32Array typed array represents an array of 32-bit floating point numbers', () => {
         // From a length
         var float32 = new Float32Array(2);
