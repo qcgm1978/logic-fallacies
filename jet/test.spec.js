@@ -32,6 +32,9 @@ describe('Reflect', () => {
 describe('flatten', () => {
 
   it('The flatten() method creates a new array with all sub-array elements concatted into it recursively up to the specified depth', () => {
+    if (typeof navigator === 'undefined') {
+      return;
+    }
     var arr1 = [1, 2, [3, 4]];
     arr1.flatten();
     // [1, 2, 3, 4]
