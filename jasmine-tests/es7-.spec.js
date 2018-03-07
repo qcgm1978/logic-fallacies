@@ -50,6 +50,7 @@ describe('es7', () => {
     })
 });
 describe('es8', () => {
+
     it('The Float32Array typed array represents an array of 32-bit floating point numbers', () => {
         // From a length
         var float32 = new Float32Array(2);

@@ -13,8 +13,8 @@ describe('Google', () => {
   //   await expect(page).toMatch('google')
   // })
 })
-describe('Reflect',()=>{
-  it('The static Reflect.apply() method calls a target function with arguments as specified.',()=>{
+describe('Reflect', () => {
+  it('The static Reflect.apply() method calls a target function with arguments as specified.', () => {
     expect(Reflect.apply(Math.floor, undefined, [1.75])).toBe(1)
     // expected output: 1
 
@@ -27,5 +27,21 @@ describe('Reflect',()=>{
     expect(Reflect.apply(''.charAt, 'ponies', [3])).toEqual('i');
     // expected output: "i"
 
+  })
+});
+describe('flatten', () => {
+
+  it('The flatten() method creates a new array with all sub-array elements concatted into it recursively up to the specified depth', () => {
+    var arr1 = [1, 2, [3, 4]];
+    arr1.flatten();
+    // [1, 2, 3, 4]
+
+    var arr2 = [1, 2, [3, 4, [5, 6]]];
+    arr2.flatten();
+    // [1, 2, 3, 4, [5, 6]]
+
+    var arr3 = [1, 2, [3, 4, [5, 6]]];
+    arr3.flatten(2);
+    // [1, 2, 3, 4, 5, 6]
   })
 })
