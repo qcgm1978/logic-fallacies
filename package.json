@@ -6,28 +6,19 @@
   "chromium-args": "--enable-logging=stderr",
   "watch": {
     "test": {
-      "run_node": {
-        "patterns": [
-          "node/js/**/*.js"
-        ]
-      },
-      "js": {
-        "patterns": [
-          "jasmine-www/**/*.js",
-          "jasmine-tests/**/*.js"
-        ]
-      }
+      "patterns": [
+        "node/js/**/*.js"
+      ]
     }
   },
   "scripts": {
     "diff": "git diff debug jet -- jasmine-test/browser.spec.js",
     "start": "npm run watch",
-    "test": "npm run watch",
-    "test-node": "npm-watch run_node",
+    "watch": "npm-watch",
+    "test": "mocha node/js/**.spec.js",
     "run_node": "mocha node/js/**.spec.js",
     "test-mocha": "mocha algorithm/*.spec.js es6/*.spec.js",
     "js": "karma start karma.conf.js",
-    "watch": "npm-watch js",
     "debug": "karma start karma.conf.js",
     "record": "asciinema rec",
     "play": "asciinema play  /var/folders/d1/zt67_99s5xj9spfdqtjhpx4h0000gn/T/tmp0ccjx_av-ascii.cast"

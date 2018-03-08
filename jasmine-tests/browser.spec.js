@@ -26,7 +26,6 @@ describe(' Intro to Chrome User Experience Report', () => {
         var http = new XMLHttpRequest();
         http.open('GET', 'task.js', false);
         http.send();
-
         var workerCode = http.responseText;
         onmessage({ data: [{ foo: 1 }, { foo: 2 }, { foo: 3 }] });
         const worker = new Worker('task.js');
@@ -37,8 +36,7 @@ describe(' Intro to Chrome User Experience Report', () => {
             done();
         }, false);
         expect(worker.postMessage('Hello World')).toEqual(undefined);
-
-    })
+    });
 });
 describe('devtools', () => {
     it('Timing breakdown phases explained', () => {
@@ -62,7 +60,9 @@ describe('API', () => {
     describe('The Worker interface of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. ', () => {
         it(`Worker()
 Creates a dedicated web worker that executes the script at the specified URL`, () => {
-
+                if (typeof myWorker === 'undefined') {
+                    return;
+                }
                 expect(myWorker).toBeDefined();
                 first.onchange(50);
                 myWorker.onmessage({ data: 200 })
