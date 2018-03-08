@@ -6,20 +6,28 @@
   "chromium-args": "--enable-logging=stderr",
   "watch": {
     "test": {
-      "patterns": [
-        "jasmine-tests/*.js",
-        "jasmine-www/**/*.js"
-      ]
+      "run_node": {
+        "patterns": [
+          "node/js/**/*.js"
+        ]
+      },
+      "js": {
+        "patterns": [
+          "jasmine-www/**/*.js",
+          "jasmine-tests/**/*.js"
+        ]
+      }
     }
   },
   "scripts": {
     "diff": "git diff debug jet -- jasmine-test/browser.spec.js",
     "start": "npm run watch",
-    "test-karma": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
-    "test": "karma start karma.conf.js",
+    "test": "npm run watch",
+    "test-node": "npm-watch run_node",
+    "run_node": "mocha node/js/**.spec.js",
     "test-mocha": "mocha algorithm/*.spec.js es6/*.spec.js",
-    "watch": "npm-watch",
-    "prebuild": "rimraf dist",
+    "js": "karma start karma.conf.js",
+    "watch": "npm-watch js",
     "debug": "karma start karma.conf.js",
     "record": "asciinema rec",
     "play": "asciinema play  /var/folders/d1/zt67_99s5xj9spfdqtjhpx4h0000gn/T/tmp0ccjx_av-ascii.cast"
@@ -59,9 +67,8 @@
     "deeplearn": "^0.5.0",
     "google-translate-api": "^2.3.0",
     "jquery": "^3.3.1",
-    "knex": "^0.14.2",
+    "knex": "^0.14.4",
     "lodash": "^4.17.4",
-    "pg": "^7.4.0",
     "regression": "https://github.com/qcgm1978/regression-js.git"
   },
   "jspm": {

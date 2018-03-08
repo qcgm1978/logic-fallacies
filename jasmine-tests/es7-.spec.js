@@ -41,7 +41,7 @@ describe('es7', () => {
         // }
 
         expect(Object.values(obj)).toEqual(expected);
-        expect(expected).not.toEqual([1, 2, 3, Symbol()])
+        expect(expected).not.toEqual([1, 2, 3, Symbol()]);
     })
 });
 describe('es8', () => {

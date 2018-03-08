@@ -1,6 +1,33 @@
 // require('@std/esm')
 // import  colors from '../jasmine-www/scripts/colors';
 describe('others', () => {
+    it('The pop() method removes the last element from an array and returns that element. ', () => {
+        var plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
+
+        expect(plants.pop()).toBe("tomato");
+        expect(plants).toEqual(["broccoli", "cauliflower", "cabbage", "kale"]);
+        plants.pop()
+        expect(plants).toEqual(["broccoli", "cauliflower", "cabbage"]);
+
+    });
+    it('The push() method adds one or more elements to the end of an array and returns the new length of the array', () => {
+        var obj = {
+            length: 0,
+
+            addElem: function addElem(elem) {
+                // obj.length is automatically incremented 
+                // every time an element is added.
+                [].push.call(this, elem);
+            }
+        };
+
+        // Let's add some empty objects just to illustrate.
+        obj.addElem({});
+        obj.addElem({});
+        expect(obj.length).toBe(2);
+        delete obj.addElem;
+        expect(obj).toEqual({ 0: Object({}), 1: Object({}), length: 2 })
+    })
     it('Calling a function before it’s been declared', () => {
         a()
         function a() {
@@ -27,14 +54,14 @@ describe('others', () => {
         expect(me + her + cigarette + supper + medicine + taxi + timeConvertMoney + happiness).toBeGreaterThan(total)
 
     });
-    it('The __lookupGetter__ method returns the function bound as a getter to the specified property.',()=>{
+    it('The __lookupGetter__ method returns the function bound as a getter to the specified property.', () => {
         var obj = {
             get foo() {
                 return Math.random() > 0.5 ? 'foo' : 'bar';
             }
         };
         expect(obj.__lookupGetter__('foo')).toMatch(/foo|bar/);
-        const func=Object.getOwnPropertyDescriptor(obj, "foo").get;
+        const func = Object.getOwnPropertyDescriptor(obj, "foo").get;
         expect(func()).toMatch(/foo|bar/);
     });
 });

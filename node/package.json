@@ -1,0 +1,22 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.spec.js",
+  "scripts": {
+    "test": "mocha **.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.3",
+    "pg": "^7.4.1"
+  },
+  "dependencies": {
+    "express": "^4.13.1",
+    "nodemon": "^1.3.7",
+    "knex": "^0.14.4"
+  }
+}
