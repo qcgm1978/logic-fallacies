@@ -59,6 +59,15 @@ describe('devtools', () => {
     })
 });
 describe('API', () => {
+    describe('The Worker interface of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. ', () => {
+        it(`Worker()
+Creates a dedicated web worker that executes the script at the specified URL`, () => {
+
+                expect(myWorker).toBeDefined();
+                first.onchange(50);
+                myWorker.onmessage({ data: 200 })
+            })
+    })
     it('url.searchParams', () => {
         const url = new URL('http://glodon.com?foo=bar')
         expect(url.searchParams).toBeDefined()

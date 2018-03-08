@@ -22,7 +22,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'jasmine-www/scripts/*.js',
+            'jasmine-www/**/*.js',
             'jasmine-tests/*.js',
             // { pattern: 'src/client/screen.css', included: false }
             // 't-SNE/*.js'
