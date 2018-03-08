@@ -1,5 +1,18 @@
 // require('@std/esm')
 // import  colors from '../jasmine-www/scripts/colors';
+
+//https://github.com/minimaxir/big-list-of-naughty-strings/
+describe('Big List of Naughty Strings, jasmine-www/blns.txt', () => {
+    it('Reserved Strings', () => {
+        expect(String(undefined)).toBe('undefined')
+        expect('NULL').toBe('NULL')
+    });
+    it('Strings which can be interpreted as numeric', () => {
+        expect(String(1.00)).toBe('1')
+        expect(1.00.toFixed(2)).toBe('1.00')
+
+    })
+})
 describe('others', () => {
     it('The pop() method removes the last element from an array and returns that element. ', () => {
         var plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
