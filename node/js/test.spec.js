@@ -2,15 +2,15 @@
 const chai = require('chai'), should = chai.should();
 const User = require('./User')
 const expect = require('chai').expect
-describe(`The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions`, () => {
-  it('', () => {
+describe(`Crypto`, () => {
+  it(`The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions`, () => {
     const crypto = require('crypto');
     const secret = 'abcdefg';
     const hash = crypto.createHmac('sha256', secret)
       .update('I love cupcakes')
       .digest('hex');
-    console.log(hash);
-    //   c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e
+    (hash).should.equal('c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e');
+    //   
   })
 });
 describe('User module', () => {
