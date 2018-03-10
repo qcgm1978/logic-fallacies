@@ -9,7 +9,15 @@ describe("es6", function () {
     // a description of the test that's appended to the module name. Because a module name
     // is typically a noun, like the name of the function being tested, the description for
     // an individual test is typically written in an action-data format. 
-
+    it(`The Object.entries() method returns an array of a given object's own enumerable property [key, value] pairs, in the same order as that provided by a for...in loop `, () => {
+        const object1 = { foo: 'bar', baz: 42 };
+        expect(Object.entries(object1)[1]).toEqual(["baz", 42]);
+        const object2 = { 0: 'a', 1: 'b', 2: 'c' };
+        expect(Object.entries(object2)[2]).toEqual(['2', 'c']);
+        const object3 = { 100: 'a', 2: 'b', 7: 'c' };
+        // properties order in objects is not guaranteed in JavaScript;
+        expect(Object.entries(object3)[0]).toEqual(["2", "b"]);
+    })
     it("accepts golden path data", function () {
         // Invoke the unit being tested as necessary
         var json = '{"Name": "Maria", "PersonalIdentifier": 2111858}';
