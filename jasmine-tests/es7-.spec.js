@@ -1,3 +1,4 @@
+// import { createAsyncIterable } from '../jasmine-www/scripts/functionality'
 describe('es7', () => {
 
     it('RegExp Named Capture Groups', () => {

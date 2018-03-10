@@ -1,3 +1,5 @@
+// import { normalizeData } from '../jasmine-www/scripts/functionality'
+
 // First argument to 'describe' (which is defined by Jasmine) is the testing module that will
 // appear in test reports. The second argument is a callback containing the individual tests.
 describe("es6", function () {

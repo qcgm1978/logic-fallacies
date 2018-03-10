@@ -1,6 +1,15 @@
+// import { colors } from '../jasmine-www/scripts/colors'
 // require('@std/esm')
 // import  colors from '../jasmine-www/scripts/colors';
-
+describe('Automatic Type Conversion in JavaScript', () => {
+    it('null', () => {
+        expect(200 * null).toBe(0);
+        expect("100" - 10).toBe(90);
+        expect("100" + 10).toBe('10010');
+        expect(("ten" * 2)).toBeNaN()
+        expect(false == 0).toBeTruthy()
+    });
+})
 //https://github.com/minimaxir/big-list-of-naughty-strings/
 describe('Big List of Naughty Strings, jasmine-www/blns.txt', () => {
     it('Reserved Strings', () => {
@@ -9,7 +18,7 @@ describe('Big List of Naughty Strings, jasmine-www/blns.txt', () => {
     });
     it('Strings which can be interpreted as numeric', () => {
         expect(String(1.00)).toBe('1')
-        expect(1.00.toFixed(2)).toBe('1.00')
+        expect(1.00.toFixed(2)).toBe('1.00');
 
     })
 })

@@ -56,13 +56,19 @@ describe('devtools', () => {
         Content Download.The browser is receiving the response.
         Receiving Push.The browser is receiving data for this response via HTTP / 2 Server Push.
         Reading Push.The browser is reading the local data previously received.`
+        const obj = {
+            'DNS Lookup.': `The browser is resolving the request's IP address.`
+        }
+        expect(obj).toBeDefined()
     })
 });
 describe('API', () => {
     describe('The Worker interface of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. ', () => {
         it(`Worker()
 Creates a dedicated web worker that executes the script at the specified URL`, () => {
-
+                if (typeof myWorker === 'undefined') {
+                    return;
+                }
                 expect(myWorker).toBeDefined();
                 first.onchange(50);
                 myWorker.onmessage({ data: 200 })

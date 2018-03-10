@@ -38,5 +38,8 @@ async function* abAsync() {
 	for (const elem of asyncIterable) {
 		yield elem;
 	}
-	
+
 }
+let functionA = () => { }, functionB = () => { }, functionC = () => { }, functionD = (val) => valueC += 'd', valueA = 'a', valueB = 'b', valueC = 'c'
+
+// export default { normalizeData, functionA, createAsyncIterable }
