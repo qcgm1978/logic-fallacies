@@ -67,6 +67,14 @@ Creates a dedicated web worker that executes the script at the specified URL`, (
                 first.onchange(50);
                 myWorker.onmessage({ data: 200 })
             })
+    });
+    describe('A Blob object represents a file-like object of immutable, raw data', () => {
+        it('The Blob() constructor allows one to create blobs from other objects.', () => {
+            var debug = { hello: "world" };
+            var blob = new Blob([JSON.stringify(debug, null, 2)], { type: 'application/json' });
+            expect(typeof blob).toEqual('object');
+            expect(blob.type).toEqual('application/json')
+        })
     })
     it('url.searchParams', () => {
         const url = new URL('http://glodon.com?foo=bar')
