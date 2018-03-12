@@ -60,6 +60,29 @@ describe('devtools', () => {
             'DNS Lookup.': `The browser is resolving the request's IP address.`
         }
         expect(obj).toBeDefined()
+    });
+    describe('10 Tips for Javascript Debugging Like a PRO with Console', () => {
+
+        it('If you want to know where the log is being prompted from use console.trace() to get the stack trace with the logged data.', () => {
+            expect(console.trace).toBeDefined();
+            expect(console.trace.name).toBe('trace')
+        })
+        it('If you are trying to find a sneaky performance issue, start counting time with console.time() and print with console.timeEnd().', (done) => {
+            console.time();
+            let i = 0;
+            const interval = setInterval(() => {
+                i++;
+                // for accellerate test speed
+                if (i > 0) {
+                    expect(console.timeEnd()).toBeUndefined();
+                    clearInterval(interval)
+                    done()
+                }
+            }, 1000)
+        });
+        it(' incorporate variables using string substitutions. These references should be types (%s = string, %i = integer, %o = object, %f = float).', () => {
+            expect(console.log('test %s string substitution %i', 'console', 0)).toBeUndefined()
+        })
     })
 });
 describe('API', () => {
