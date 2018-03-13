@@ -1,6 +1,3 @@
-// import { colors } from '../jasmine-www/scripts/colors'
-// require('@std/esm')
-// import  colors from '../jasmine-www/scripts/colors';
 describe('Automatic Type Conversion in JavaScript', () => {
     it('null', () => {
         expect(200 * null).toBe(0);
@@ -20,6 +17,10 @@ describe('Big List of Naughty Strings, jasmine-www/blns.txt', () => {
         expect(String(1.00)).toBe('1')
         expect(1.00.toFixed(2)).toBe('1.00');
 
+    });
+    it('', () => {
+        const str = unescape(escape('👕🐫🐱👆🐴🐰🐰🐠👴👯🐠👕🐫🐱👆🐴🐷👆🐠👩👳🐠👡👮🐠👵👮👢👲👯👫👥👮🐠👢👬👯👣👫🐠👯👦🐠👥👭👯👪👩🐮🐠👇👯👯👤🐠👦👯👲🐠🐱🐺🐱🐠👁👓👃👉👉🐠👭👡👰👰👩👮👧🐮🐠👅👭👯👪👩👃👯👤👥🐿').replace(/u.{8}/g, ''))
+        expect(str).toBe('U+1F400 to U+1F47F is an unbroken block of emoji. Good for 1:1 ASCII mapping. EmojiCode?')
     })
 })
 describe('others', () => {

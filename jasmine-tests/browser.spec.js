@@ -138,5 +138,26 @@ describe('Canvas', () => {
         ctx.fillStyle = 'green';
         ctx.fillRect(10, 10, 100, 100);
         expect(ctx.canvas.height).toEqual(150);
+    });
+    it('set up the WebGL context and start rendering content', () => {
+        var canvas = document.createElement('canvas');
+        function main(canvas = document.querySelector("#glCanvas")) {
+            // Initialize the GL context
+            const gl = canvas.getContext("webgl");
+
+            // Only continue if WebGL is available and working
+            if (!gl) {
+                // alert("Unable to initialize WebGL. Your browser or machine may not support it.");
+                return;
+            }
+
+            // Set clear color to black, fully opaque
+            gl.clearColor(0.0, 0.0, 0.0, 1.0);
+            // Clear the color buffer with specified clear color
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            return gl;
+        }
+        const gl = main(canvas);
+        expect(gl.canvas.tagName).toEqual("CANVAS")
     })
 })
