@@ -155,6 +155,8 @@ describe('Canvas', () => {
             gl.clearColor(0.0, 0.0, 0.0, 1.0);
             // Clear the color buffer with specified clear color
             gl.clear(gl.COLOR_BUFFER_BIT);
+            expect(gl.COLOR_BUFFER_BIT).toBe(16384);
+            expect(typeof gl.getParameter(gl.COLOR_CLEAR_VALUE)).toBe('object')
             return gl;
         }
         const gl = main(canvas);
