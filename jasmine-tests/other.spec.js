@@ -1,3 +1,12 @@
+describe('Math is a built-in object that has properties and methods for mathematical constants and functions', () => {
+    it('The Math.PI property represents the ratio of the circumference of a circle to its diameter', () => {
+        expect(Number(Math.PI.toFixed(2))).toBe(3.14);
+        function calculateCircumference(radius) {
+            return Number((2 * Math.PI * radius).toFixed(2));
+        }
+        expect(calculateCircumference(10)).toBe(62.83)
+    })
+})
 describe('Automatic Type Conversion in JavaScript', () => {
     it('null', () => {
         expect(200 * null).toBe(0);

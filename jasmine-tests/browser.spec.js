@@ -1,3 +1,11 @@
+describe('SVG', () => {
+    it(`The SVGPathElement.getTotalLength() method returns the user agent's computed value for the total length of the path in user units.`, () => {
+        const svg = document.createElement('svg')
+        expect(svg.getTotalLength).toBeUndefined();
+        const path = document.createElement('path')
+        expect(path.getTotalLength).toBeUndefined();
+    })
+})
 describe(' Intro to Chrome User Experience Report', () => {
     it('Network Information API', () => {
         const rtt = navigator.connection.rtt,
@@ -81,7 +89,7 @@ describe('devtools', () => {
             }, 1000)
         });
         it(' incorporate variables using string substitutions. These references should be types (%s = string, %i = integer, %o = object, %f = float).', () => {
-            expect(console.log('test %s string substitution %i', 'console', 0)).toBeUndefined()
+            // expect(console.log('test %s string substitution %i', 'console', 0)).toBeUndefined()
         })
     })
 });

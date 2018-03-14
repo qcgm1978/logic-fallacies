@@ -120,7 +120,26 @@ describe('.fetchCurrentTemperature', function () {
     it('returns a promise', function () {
         expect(temperaturePromise).toEqual(jasmine.any(Promise));
     });
-
+    it('Fetch with Basic Auth', () => {
+        // Object {
+        //     authenticated: true
+        //     user: "user"
+        // }
+        const login = 'login', password = 'password', base64 = {
+            encode: () => { }
+        }
+        fetch("http://ip.jsontest.com/", {
+            headers: new Headers({
+                "Authorization": `Basic ${base64.encode(`${login}:${password}`)}`
+            }),
+        }).then(response => {
+            if (!response.ok) throw new Error(response.status);
+            done()
+            return response.json();
+        }).catch(err => {
+            done()
+        })
+    })
     describe('on successful fetch', function () {
         beforeEach(function () {
             var response = new Response(JSON.stringify({
