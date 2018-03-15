@@ -1,3 +1,29 @@
+// describe(`Mathematical Markup Language (MathML) is a dialect of XML for describing mathematical notation and capturing both its structure and content. `, () => {
+//     it(`The top-level element in MathML is <math>`, () => {
+//         const html = `<math>
+//     <mrow>
+//       <mrow>
+//         <msup>
+//           <mi>a</mi>
+//           <mn>2</mn>
+//         </msup>
+//         <mo>+</mo>
+//         <msup>
+//           <mi>b</mi>
+//           <mn>2</mn>
+//         </msup>
+//       </mrow>
+//       <mo>=</mo>
+//       <msup>
+//         <mi>c</mi>
+//         <mn>2</mn>
+//       </msup>
+//     </mrow>
+//   </math>`
+//         $(html).appendTo('body');
+
+//     })
+// })
 describe('SVG', () => {
     it(`The SVGPathElement.getTotalLength() method returns the user agent's computed value for the total length of the path in user units.`, () => {
         const svg = document.createElement('svg')
@@ -67,7 +93,10 @@ describe('devtools', () => {
         const obj = {
             'DNS Lookup.': `The browser is resolving the request's IP address.`
         }
-        expect(obj).toBeDefined()
+        expect(obj).toBeDefined();
+        const startTime = 1.06 * 1000, queueing = 1.05, stalled = 19.62, proxyNegotiation = 11.52, requestTime = '67μs', waiting = 1.05 * 1000;
+        const applicationRTT = queueing + stalled + proxyNegotiation + parseInt(requestTime) * 10e-3 + waiting;
+        expect(applicationRTT).toBe(1082.86)
     });
     describe('10 Tips for Javascript Debugging Like a PRO with Console', () => {
 
