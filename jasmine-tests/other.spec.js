@@ -1,3 +1,42 @@
+describe(`17 Equations that changed the world!`, () => {
+    it(`Pythagoras's Theorem`, () => {
+        const hypotenuse = 5, side1 = 3, side2 = 4;
+        expect(Math.pow(hypotenuse, 2)).toBe(Math.pow(3, 2) + Math.pow(4, 2))
+    });
+    it(`Logarithm product rule
+The logarithm of the multiplication of x and y is the sum of logarithm of x and logarithm of y.`, () => {
+            const x = 5, y = 10, fixed = 10;
+            expect(Math.log(x * y).toFixed(fixed)).toBe((Math.log(x) + Math.log(y)).toFixed(fixed));
+        });
+    it(`go through the basics of integral and differential calculus`, () => {
+        // Make a calculus equation f(x) = x^2
+        // and assign that function to the variable y
+        var y = new CalculusEquation('x', 'x ^ 2');
+        y.at(2); // should return 4
+        y.at(6); // should return 36
+        y.derivative();
+        // should return CalculusEquation('x', '2x')
+        y.integral();
+        // should return CalculusEquation('x', '(x^3)/3')
+        // note that the integral ignores the constant of integration
+        // calls to derivative and integral can be chained
+        var z = new CalculusEquation('x', '2x ^ 2 + 3x');
+        z.derivative().derivative();
+        // should return CalculusEquation('x', '4')
+        z.derivative().at(2); // should return 7
+        // can handle trig functions
+        var f = new CalculusEquation('x', 'cos(x) ');
+        f.derivative(); // should return CalculusEquation('x', '-sin(x)')
+    });
+})
+describe(`Bitwise operators treat their operands as a sequence of 32 bits (zeroes and ones), rather than as decimal, hexadecimal, or octal numbers`, () => {
+    it(`Performs the XOR operation on each pair of bits. a XOR b yields 1 if a and b are different. `, () => {
+        expect(0 ^ 0).toBe(0)
+        expect(0 ^ 1).toBe(1)
+        expect(1 ^ 0).toBe(1)
+        expect(1 ^ 1).toBe(0)
+    });
+})
 describe('Math is a built-in object that has properties and methods for mathematical constants and functions', () => {
     it('The Math.PI property represents the ratio of the circumference of a circle to its diameter', () => {
         expect(Number(Math.PI.toFixed(2))).toBe(3.14);
