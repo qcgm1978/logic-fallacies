@@ -1,4 +1,4 @@
-describe(`17 Equations that changed the world!`, () => {
+describe(`17 Equations that changed the world! https://pbs.twimg.com/media/DYkbuveXcAEmE4y.jpg:large`, () => {
     it(`Pythagoras's Theorem`, () => {
         const hypotenuse = 5, side1 = 3, side2 = 4;
         expect(Math.pow(hypotenuse, 2)).toBe(Math.pow(3, 2) + Math.pow(4, 2))
@@ -27,6 +27,70 @@ The logarithm of the multiplication of x and y is the sum of logarithm of x and 
         // can handle trig functions
         var f = new CalculusEquation('x', 'cos(x) ');
         f.derivative(); // should return CalculusEquation('x', '-sin(x)')
+    });
+    it(`Law of Gravity`, () => {
+        const g = 9.8, m1 = 1, m2 = 2, r = 3, mR = 0.5;
+        expect(g * m1 * m2 / Math.pow(r, 2)).toBeGreaterThan(g * m1 * m2 / Math.pow(r + 0.5, 2))
+    });
+    it(`the square root of minus one`, () => {
+        const i = Math.sqrt(-1);
+        expect(i).toBeNaN()
+        const c = new Complex("i");
+        // base on G:\logic-fallacies\jasmine-www\scripts\complex.js
+        expect(Math.pow(c, 2)).toBe(0)
+        expect(parseInt(c.mul(c))).toBe((-1))
+    });
+    it(`euler's formula for polyhedra`, () => {
+        const Vertices = 4, Edges = 6, Faces = 4;
+        expect(Vertices - Edges + Faces).toBe(2)
+    });
+    it(`normal distribution`, () => {
+        // Standard Normal variate using Box-Muller transform. https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve
+        function randn_bm() {
+            var u = 0, v = 0;
+            while (u === 0) u = Math.random(); //Converting [0,1) to (0,1)
+            while (v === 0) v = Math.random();
+            return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+        }
+        expect(randn_bm()).toBeLessThan([-3.10, 3.24][1])
+        expect(randn_bm()).toBeGreaterThan([-3.10, 3.24][0])
+    });
+    it(`wave equation, http://denys.li/2017/09/16/wave-equation-three-js/`, () => {
+        function initial(x = N / 2, y = N / 2) { // Gaussian Bell
+            sigma = 1;
+            for (i = 1; i < SUBD - 1; i++)
+                for (j = 1; j < SUBD - 1; j++) {
+                    u[i][j] = 100 * Math.exp(-sigma * (i - x) * (i - x)) * Math.exp(- sigma * (j - y) * (j - y));
+                }
+        }
+        function boundary(A) {
+            for (i = 1; i < N; i++) {
+                A[i][0] = A[i][1];
+                A[i][N - 2] = A[i][N - 1];
+            }
+            for (j = 1; j < N; j++) {
+                A[0][j] = A[1][j];
+                A[N - 1][j] = A[N - 2][j];
+            }
+            return A;
+        }
+        function animate(N) {
+            SI = 1 // Start coordinate
+            EI = N - 2 // End coordinate
+            for (i = SI; i < EI; i++) for (j = SI; j < EI; j++) utemp[i][j] = (2 * utemp[i][j] - utp[i][j]) + 0.5 * (u[i - 1][j] + u[i + 1][j] + u[i][j - 1] + u[i][j + 1] - 4 * u[i][j]);
+            for (i = SI; i < EI; i++) for (j = SI; j < EI; j++) utp[i][j] = u[i][j];
+            for (i = SI; i < EI; i++) for (j = SI; j < EI; j++) u[i][j] = utemp[i][j];
+
+            u = boundary(u);
+
+            overwrite()
+
+            requestAnimationFrame(animate);
+
+            renderer.render(scene, camera);
+
+        }
+        animate(10)
     });
 })
 describe(`Bitwise operators treat their operands as a sequence of 32 bits (zeroes and ones), rather than as decimal, hexadecimal, or octal numbers`, () => {
