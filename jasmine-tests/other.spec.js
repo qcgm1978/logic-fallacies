@@ -56,6 +56,9 @@ The logarithm of the multiplication of x and y is the sum of logarithm of x and 
         expect(randn_bm()).toBeGreaterThan([-3.10, 3.24][0])
     });
     it(`wave equation, http://denys.li/2017/09/16/wave-equation-three-js/`, () => {
+        if (typeof utemp === 'undefined') {
+            return;
+        }
         function initial(x = N / 2, y = N / 2) { // Gaussian Bell
             sigma = 1;
             for (i = 1; i < SUBD - 1; i++)
@@ -208,13 +211,30 @@ describe('Progressive Web App', () => {
         expect(arr.join('')).toEqual(PWA)
     })
 });
-describe('Star Wars', () => {
-    it('Theatrical films', () => {
+describe(`Films`, () => {
 
-        const originalTrilogy = ['A New Hope', 'The Empire Strikes Back', 'Return of the Jedi',], prequelTrilogy = ['The Phantom Menace', 'Attack of the clones', 'Revenge of the Sith'], sequelTrilogy = ['The force Awakens', 'The Last Jedi', '']
-        expect(originalTrilogy.concat(prequelTrilogy, sequelTrilogy).length).toBe(9)
+    describe('Star Wars', () => {
+        it('Theatrical films', () => {
+
+            const originalTrilogy = ['A New Hope', 'The Empire Strikes Back', 'Return of the Jedi',], prequelTrilogy = ['The Phantom Menace', 'Attack of the clones', 'Revenge of the Sith'], sequelTrilogy = ['The force Awakens', 'The Last Jedi', '']
+            expect(originalTrilogy.concat(prequelTrilogy, sequelTrilogy).length).toBe(9)
+        })
+    });
+    describe(`The Hitchhiker's Guide to the Galaxy`, () => {
+        it(`>>> (Zero-fill right shift)`, () => {
+            expect(9 >>> 2).toBe(2)
+            expect(-9 >>> 2).toBe(1073741821)
+            expect(-9 >> 2).toBe(-3)
+            expect(42 >>> 0).toBe(42)
+            const num = 6.;
+            expect(num.toString(2)).toBe(`110`)
+            expect(Number((42 >>> 0).toString(2))).toBe(101010)
+        });
+        it(``,()=>{
+            
+        });
     })
-});
+})
 describe('Munsell Color System', () => {
     it(' For this reason alone the system proposed by Mr. Munsell, with its three dimensions of hue, value, and chroma, is a decided step in advance over any previous proposition', () => {
         const MunsellColSys = ['hue', 'value', 'chroma'], hue = 'hue', value = 'value', chroma = 'chroma';
