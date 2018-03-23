@@ -93,7 +93,7 @@ The logarithm of the multiplication of x and y is the sum of logarithm of x and 
             renderer.render(scene, camera);
 
         }
-        animate(10)
+        // animate(10)
     });
 })
 describe(`Bitwise operators treat their operands as a sequence of 32 bits (zeroes and ones), rather than as decimal, hexadecimal, or octal numbers`, () => {

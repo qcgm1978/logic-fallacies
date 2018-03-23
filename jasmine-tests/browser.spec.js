@@ -29,7 +29,10 @@ describe('SVG', () => {
         const svg = document.createElement('svg')
         expect(svg.getTotalLength).toBeUndefined();
         const path = document.createElement('path')
-        expect(path.getTotalLength).toBeUndefined();
+        const svg = $('<svg>')
+        svg.append(path)
+        svg.appendTo('body');
+        expect($('svg path')[0].getTotalLength).toBeUndefined();
     })
 })
 describe(' Intro to Chrome User Experience Report', () => {
