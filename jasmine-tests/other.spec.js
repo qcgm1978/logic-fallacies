@@ -1,3 +1,18 @@
+describe('Number', () => {
+    it(`numObj.toFixed([digits]): The toFixed() method formats a number using fixed-point notation`, () => {
+        var numObj = 12345.6789;
+
+        expect(numObj.toFixed()).toBe('12346');       // Returns '12346': note rounding, no fractional part
+        expect(numObj.toFixed(1)).toBe('12345.7');      // Returns '12345.7': note rounding
+        expect(numObj.toFixed(6)).toBe('12345.678900');      // Returns '12345.678900': note added zeros
+        expect((1.23e+20).toFixed(2)).toBe('123000000000000000000.00');  // Returns '123000000000000000000.00'
+        expect((1.23e-10).toFixed(2)).toBe('0.00');  // Returns '0.00'
+        expect(2.34.toFixed(1)).toBe('2.3');        // Returns '2.3'
+        expect(2.35.toFixed(1)).toBe('2.4');        // Returns '2.4'. Note that it rounds up in this case.
+        expect(-2.34.toFixed(1)).toBe(-2.3);       // Returns -2.3 (due to operator precedence, negative number literals don't return a string...)
+        expect((-2.34).toFixed(1)).toBe('-2.3');     // Returns '-2.3' (...unless you use parentheses)
+    });
+})
 describe(`17 Equations that changed the world! https://pbs.twimg.com/media/DYkbuveXcAEmE4y.jpg:large`, () => {
     it(`Pythagoras's Theorem`, () => {
         const hypotenuse = 5, side1 = 3, side2 = 4;
@@ -230,8 +245,8 @@ describe(`Films`, () => {
             expect(num.toString(2)).toBe(`110`)
             expect(Number((42 >>> 0).toString(2))).toBe(101010)
         });
-        it(``,()=>{
-            
+        it(``, () => {
+
         });
     })
 })
