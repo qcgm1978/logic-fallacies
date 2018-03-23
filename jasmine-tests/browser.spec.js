@@ -29,9 +29,9 @@ describe('SVG', () => {
         const svg = document.createElement('svg')
         expect(svg.getTotalLength).toBeUndefined();
         const path = document.createElement('path')
-        const svg = $('<svg>')
-        svg.append(path)
-        svg.appendTo('body');
+        const svg1 = $('<svg>')
+        svg1.append(path)
+        svg1.appendTo('body');
         expect($('svg path')[0].getTotalLength).toBeUndefined();
     })
 })
