@@ -204,7 +204,7 @@ describe('Progressive Web App', () => {
     it(' It loads quickly, even on flaky networks, sends relevant push notifications, has an icon on the home screen, and loads as a top-level, full screen experience', () => {
         const PWA = 'PRCAFSDRIL', contents = 'Progressive, Responsive, Connectivity independent, App-like, Fresh, Safe, Discoverable, Re-engageable, Installable, Linkable';
         const arr = contents.match(/[A-Z]/g);
-        // console.log(arr)
+        // expect(arr)
         expect(arr.join('')).toEqual(PWA)
     })
 });
@@ -323,4 +323,25 @@ describe('Short Coding', () => {
         expect(times1).toBe(12);
     })
 
+});
+describe(`Bitwise operators treat their operands as a sequence of 32 bits (zeroes and ones), rather than as decimal, hexadecimal, or octal numbers.`, () => {
+    it(`Bitwise operators perform their operations on such binary representations, but they return standard JavaScript numerical values.`, () => {
+        expect(5 & 13).toBe(5); // 0101 & 1101 = 0101
+        expect(parseInt("0101", 2) & parseInt("1101", 2)).toBe(5);
+        expect(5 & 13 & 3).toBe(1); // 0101 & 1101 & 0011 = 0001
+        expect(5 | 13).toBe(13); // 0101 | 1101 = 1101
+    });
+    it(`The operands of all bitwise operators are converted to signed 32-bit integers in two's complement format.`, () => {
+        const binary = parseInt('00000000000000000000000100111010', 2)
+        expect(binary).toBe(314)
+    });
+    describe(`Bitwise logical operators`, () => {
+        it(`& (Bitwise AND)`, () => {
+            expect(14 & 9).toBe(8)
+            const num1 = Number((14 >>> 0).toString(2)), num2 = Number((9 >>> 0).toString(2)), num3 = Number((8 >>> 0).toString(2))
+            expect(num1).toBe(1110)
+            expect(num2).toBe(1001)
+            expect(num3).toBe(1000)
+        });
+    })
 })
