@@ -5,10 +5,7 @@
 describe("es6", function () {
 
 
-    // The 'it' function of Jasmine defined an individual test. The first argument is
-    // a description of the test that's appended to the module name. Because a module name
-    // is typically a noun, like the name of the function being tested, the description for
-    // an individual test is typically written in an action-data format. 
+
     it(`The Object.entries() method returns an array of a given object's own enumerable property [key, value] pairs, in the same order as that provided by a for...in loop `, () => {
         const object1 = { foo: 'bar', baz: 42 };
         expect(Object.entries(object1)[1]).toEqual(["baz", 42]);
@@ -162,11 +159,13 @@ describe('.fetchCurrentTemperature', function () {
         var errorObj = { msg: 'Wow, this really failed!' };
 
         beforeEach(function () {
-            promiseHelper.reject(errorObj);
+            // promiseHelper.reject(errorObj);
         });
 
-        it('resolves its promise with the current temperature', function (done) {
-            temperaturePromise.catch(function (error) {
+        it('resolves its promise with the current temperature', function () {
+            temperaturePromise.then(() => {
+                done();
+            }).catch(function (error) {
                 expect(error).toEqual(errorObj);
                 done();
             });
@@ -182,8 +181,9 @@ describe('built-in string methods', () => {
         expect(hello.repeat(3)).toEqual('HelloHelloHello');
         expect(hello.codePointAt(1)).toEqual(101)
         expect(hello.padStart(10)).toEqual('     Hello')
-        expect(hello.padEnd(10)).toEqual('Hello     ')
-    })
+        expect(hello.padEnd(10)).toEqual('Hello     ');
+        expect('  a '.trim()).toBe('a')
+    });
 })
 describe('Regular Expression', () => {
     it('s (dotAll) flag for regular expressions', () => {

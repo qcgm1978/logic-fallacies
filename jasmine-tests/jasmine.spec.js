@@ -1,4 +1,30 @@
 describe('Global', () => {
+    // 1 = 2
+    beforeAll: {
+        this.date = new Date(2009, 9, 2, 22, 14, 45);
+        Date.formats = {
+            // ...
+            j: function (date) {
+                var jan1 = new Date(date.getFullYear(), 0, 1);
+                var diff = date.getTime() - jan1.getTime();
+                // 86400000 == 60 * 60 * 24 * 1000
+                return Math.ceil(diff / 86400000);
+            },
+            // ... 
+        };
+    }
+    it(`beforeAll`, () => {
+
+        expect(beforeAll).toBeDefined();
+        expect(afterAll).toBeDefined()
+    });
+    it(`beforeAll`, () => {
+        expect(this.date).toBeDefined()
+        expect(this.date.getTime()).toBeLessThan(new Date().getTime())
+        expect(this.date.getMonth()).toBe(9)
+        expect(Date.formats).toBeDefined()
+        expect(Date.formats.j(new Date())).toBeGreaterThan(83)
+    });
     it('afterAll', () => {
         expect(afterAll).toThrowError(Error);
         expect(expect).not.toThrowError()
@@ -10,6 +36,9 @@ describe('Global', () => {
         expect(NaN).toBeNaN()
         expect(123.99).toBeCloseTo(124, 0.1)
     })
+    afterAll: {
+        // delete this.date;
+    }
 })
 describe('Following these rules, the code development steps are:', () => {
 

@@ -1,3 +1,23 @@
+
+
+describe(`Benchmarks and Relative Performance`, () => {
+    it(`measure relative performance of different loop- ing styles`, () => {
+        // runBenchmark("for-loop",
+        //     forLoop);
+        // runBenchmark("for-loop, cached length",
+        //     forLoopCachedLength);
+        // runBenchmark("for-loop, direct array access",
+        //     forLoopDirectAccess);
+        // runBenchmark("while-loop",
+        //     whileLoop);
+        // runBenchmark("while-loop, cached length property",
+        //     whileLoopCachedLength);
+        // runBenchmark("reversed while-loop",
+        //     reversedWhileLoop);
+        // runBenchmark("double reversed while-loop",
+        // doubleReversedWhileLoop);
+    });
+})
 describe('Number', () => {
     it(`numObj.toFixed([digits]): The toFixed() method formats a number using fixed-point notation`, () => {
         var numObj = 12345.6789;
@@ -154,6 +174,80 @@ describe('Big List of Naughty Strings, jasmine-www/blns.txt', () => {
     })
 })
 describe('others', () => {
+    describe(`/Users/qcgm1978/Documents/book/programming`, () => {
+        it(`Using array methods with arguments`, () => {
+
+            function addToArray() {
+                var targetArr = arguments[0];
+                var add = Array.prototype.slice.call(arguments, 1);
+                return targetArr.concat(add);
+            }
+            expect(addToArray).toThrow();
+            expect(addToArray('a')).toEqual('a')
+            expect(addToArray('a', 'b')).toBe('ab')
+            const addToArray1 = () => {
+                expect(arguments.length).toBeDefined()
+            }
+            expect(addToArray1).toThrow()
+        });
+        it("test dynamic relationship"), function () {
+            function modify(a, b) {
+                b = 42;
+                arguments[0] = arguments[1];
+                return a;
+            }
+            expect(modify(1, 2)).toBe(42);
+        }
+        it("test scope", function () {
+            function sum() {
+                expect(i).toBeUndefined();
+                expect(function () {
+                    assertUndefined(someVar);
+                }).toThrow();
+                var total = arguments[0];
+                if (arguments.length > 1) {
+                    for (var i = 1, l = arguments.length; i < l; i++) {
+                        total += arguments[i];
+                    }
+                }
+                expect(i).toBe(5);
+                return total;
+            }
+            sum(1, 2, 3, 4, 5);
+        })
+        it(`Function scope after hoisting`, () => {
+            function sum() {
+                var i; var l;
+                expect(i).toBeUndefined();
+                /* ... */
+            }
+            sum(1, 2, 3, 4, 5);
+        });
+        it(`The this object and window`, () => {
+            expect(this).toBe(window);
+            expect(this.window).toBe(window);
+            expect(window.window).toBe(window);
+        });
+        it(`The Scope Chain`,()=>{
+            function adder(base) {
+                return function (num) {
+
+                    return base + num;
+                };
+        });
+    });
+    describe(`Array.prototype.splice`, () => {
+        it(`test array splice should modify array`, () => {
+            var arr = [1, 2, 3, 4, 5];
+            var result = arr.splice(2, 3);
+            expect(arr).toEqual([1, 2]);
+        });
+        it("test array splice should return removed items", () => {
+            var arr = [1, 2, 3, 4, 5];
+            var result = arr.splice(2, 3);
+            expect(result).toEqual([3, 4, 5]);
+        });
+    });
     it('The pop() method removes the last element from an array and returns that element. ', () => {
         var plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
 
