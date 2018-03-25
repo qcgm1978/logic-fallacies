@@ -26,7 +26,7 @@ describe("es6", function () {
     });
     it('Browser unhandled rejection', () => {
         let unhandle = window.onunhandledrejection;
-        // console.log(unhandle)
+        // expect(unhandle.toBe())
         expect(typeof unhandle).toEqual('object');
         unhandle = () => {
             expect(true).toBeFalsy()
