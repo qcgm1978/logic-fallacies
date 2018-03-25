@@ -228,12 +228,13 @@ describe('others', () => {
             expect(this.window).toBe(window);
             expect(window.window).toBe(window);
         });
-        it(`The Scope Chain`,()=>{
+        it(`The Scope Chain`, () => {
             function adder(base) {
                 return function (num) {
 
                     return base + num;
                 };
+            }
         });
     });
     describe(`Array.prototype.splice`, () => {
