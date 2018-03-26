@@ -1,5 +1,32 @@
 
+describe(`An extensive math library for JavaScript and Node.js http://mathjs.org`, () => {
+    it(`math.js can evaluate expressions and supports chained operations.`, () => {
+        // functions and constants
+        expect(math.round(math.e, 3)).toBe(2.718)
+        expect(math.atan2(3, -3) / math.pi).toBe(0.75)
+        expect(math.log(10000, 10)).toBe(4)
+        expect(math.sqrt(-4)).toEqual({
+            re: 0, im: 2
+        });
+        expect(math.pow([[-1, 2], [3, 1]], 2)).toEqual([[7, 0], [0, 7]])
+        expect(math.derivative('x^2 + x', 'x').op).toBe('+');
 
+        // expressions
+        expect(math.eval('12 / (2.3 + 0.7)')).toBe(4)
+        expect(math.eval('12.7 cm to inch').value).toBe(0.127)
+        expect(math.eval('sin(45 deg) ^ 2').toFixed(1)).toBe('0.5')
+        expect(math.eval('9 / 3 + 2i')).toEqual({
+            re: 3, im: 2
+        })
+        expect(math.eval('det([-1, 2; 3, 1])')).toBe(-7)
+
+        // chaining
+        expect(math.chain(3)
+            .add(4)
+            .multiply(2)
+            .done()).toBe(14)
+    });
+})
 describe(`Benchmarks and Relative Performance`, () => {
     it(`measure relative performance of different loop- ing styles`, () => {
         // runBenchmark("for-loop",
@@ -67,14 +94,40 @@ The logarithm of the multiplication of x and y is the sum of logarithm of x and 
         const g = 9.8, m1 = 1, m2 = 2, r = 3, mR = 0.5;
         expect(g * m1 * m2 / Math.pow(r, 2)).toBeGreaterThan(g * m1 * m2 / Math.pow(r + 0.5, 2))
     });
-    it(`the square root of minus one`, () => {
-        const i = Math.sqrt(-1);
-        expect(i).toBeNaN()
-        const c = new Complex("i");
-        // base on G:\logic-fallacies\jasmine-www\scripts\complex.js
-        expect(Math.pow(c, 2)).toBe(0)
-        expect(parseInt(c.mul(c))).toBe((-1))
-    });
+    describe(`A complex number library: https://github.com/infusion/Complex.js`, () => {
+        it(`the square root of minus one`, () => {
+            const i = Math.sqrt(-1);
+            expect(i).toBeNaN()
+            let c = new Complex("i");
+            // base on G:\logic-fallacies\jasmine-www\scripts\complex.js
+            expect(Math.pow(c, 2)).toBe(0)
+            expect(parseInt(c.mul(c))).toBe((-1));
+            c = new Complex("99.3+8i");
+            expect(c.mul({ re: 3, im: 9 }).div(4.9).sub(3, 2)).toEqual({ "re": 43.10204081632652, "im": 185.28571428571425 });
+
+        });
+        describe(`pass either Objects, Doubles or Strings.`, () => {
+            it(`Objects passed`, () => {
+                const real = 1, imaginary = 2, angle = 3, radius = 4;
+                expect(new Complex({ re: real, im: imaginary })).toEqual({
+                    re: 1,
+                    im: 2
+                });
+                expect(new Complex({ arg: angle, abs: radius })).toEqual({
+                    re: -3.9599699864017817,
+                    im: 0.5644800322394689
+                });
+                expect(new Complex({ phi: angle, r: radius })).toEqual({
+                    re: -3.9599699864017817,
+                    im: 0.5644800322394689
+                });
+                expect(new Complex([real, imaginary])).toEqual({
+                    re: 1,
+                    im: 2
+                }); // Vector/Array syntax
+            });
+        });
+    })
     it(`euler's formula for polyhedra`, () => {
         const Vertices = 4, Edges = 6, Faces = 4;
         expect(Vertices - Edges + Faces).toBe(2)
