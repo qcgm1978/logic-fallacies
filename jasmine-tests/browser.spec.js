@@ -35,6 +35,7 @@ describe('SVG', () => {
         expect($('svg path')[0].getTotalLength).toBeUndefined();
     })
 })
+
 describe(' Intro to Chrome User Experience Report', () => {
     it('Network Information API', () => {
         const rtt = navigator.connection.rtt,
