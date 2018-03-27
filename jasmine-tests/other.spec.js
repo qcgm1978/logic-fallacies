@@ -26,6 +26,85 @@ describe(`An extensive math library for JavaScript and Node.js http://mathjs.org
             .multiply(2)
             .done()).toBe(14)
     });
+    it(`Math.js supports multi dimensional matrices and arrays.`, () => {
+        // create an array and a matrix
+        var array = [[2, 0], [-1, 3]];                // Array
+        var matrix = math.matrix([[7, 1], [-2, 3]]);  // Matrix
+        expect(matrix._size).toEqual([2, 2])
+        // perform a calculation on an array and matrix
+        expect(math.square(array)).toEqual([[4, 0], [1, 9]]);                           // Array, 
+        expect(math.square(matrix)._data).toEqual([[49, 1], [4, 9]]);                          // Matrix, [[49, 1], [4, 9]]
+
+        // perform calculations with mixed array and matrix input
+        expect(math.add(array, matrix)._data).toEqual([[9, 1], [-3, 6]]);                      // Matrix, [[9, 1], [-3, 6]]
+        expect(math.multiply(array, matrix)._data).toEqual([[14, 2], [-13, 8]]);
+        expect(math.multiply(matrix, array)._data).toEqual([[13, 3], [-7, 9]]);
+        expect(math.multiply(array, matrix)._data).not.toEqual(math.multiply(matrix, array)._data)
+        // create a matrix. Type of output of function ones is determined by the
+        // configuration option `matrix`
+        expect(math.ones(2, 3)._data).toEqual([[1, 1, 1], [1, 1, 1]]);
+    });
+    describe(`Matrices and Arrays: https://www.mathworks.com/help/matlab/learn_matlab/matrices-and-arrays.html?s_cid=learn_doc`, () => {
+        beforeAll: {
+            this.matrix_3x3 = math.matrix([[1, 2, 3], [4, 5, 6], [7, 8, 10]]);
+
+        }
+        it(`Array Creation`, () => {
+            const matrix = math.matrix([1, 2, 3, 4])
+            expect(matrix._data).toEqual([1, 2, 3, 4])
+            expect(matrix._size).toEqual([4])
+            const matrix_3x3 = math.matrix([[1, 2, 3], [4, 5, 6], [7, 8, 10]])
+            expect(matrix_3x3._data).toEqual([[1, 2, 3], [4, 5, 6], [7, 8, 10]]);
+            const ones = math.ones(5, 1)._data;
+            expect(math.multiply(ones, 0)).toEqual([[0], [0], [0], [0], [0]])
+        });
+        it(`Matrix and Array Operations`, () => {
+            const matrix_3x3 = math.matrix([[1, 2, 3], [4, 5, 6], [7, 8, 10]]);
+            expect(math.add(matrix_3x3, 10)._data).toEqual([[11, 12, 13], [14, 15, 16], [17, 18, 20]])
+            const generateSinMatlab = math.sin(matrix_3x3)._data.reduce((arr, n) => {
+                arr.push(n.reduce((arr, n) => {
+                    arr.push(Number(n.toFixed(4)));
+                    return arr;
+                }, []));
+                return arr
+            }, []);
+            expect(generateSinMatlab).toEqual([[0.8415, 0.9093, 0.1411],
+            [- 0.7568, - 0.9589, - 0.2794],
+            [0.6570, 0.9894, - 0.5440]]);
+            expect(math.transpose(matrix_3x3)._data).toEqual([[1, 4, 7], [2, 5, 8], [3, 6, 10]])
+            const inv = math.inv(matrix_3x3)._data;
+            expect(inv).toEqual([[-0.6666666666666665, -1.3333333333333335, 1], [-0.6666666666666667, 3.6666666666666665, -2], [1, -2, 1]])
+            const identityMatrix = math.multiply(matrix_3x3, inv)._data;
+            identityMatrix[0][2] = identityMatrix[0][2] === 0 ? -0 : identityMatrix[0][2];
+            identityMatrix[1][1] = Math.round(identityMatrix[1][1])
+            expect(identityMatrix).toEqual([[1.0000, 0, - 0.0000],
+            [0, 1.0000, 0],
+            [0, 0, 1.0000]])
+            const identityMatrix1 = eval(math.chain(matrix_3x3).multiply(inv).toString());
+            expect(identityMatrix1).toEqual([[1.0000, 0, 0.0000],
+            [0, 0.9999999999999982, 0],
+            [0, 0, 1.0000]])
+        });
+        it(`To perform element-wise multiplication rather than matrix multiplication`, () => {
+            expect(math.dotMultiply(this.matrix_3x3, this.matrix_3x3)._data).toEqual([[1, 4, 9], [16, 25, 36], [49, 64, 100]])
+            expect(math.dotPow(this.matrix_3x3, 3)._data).toEqual([[1, 8, 27], [64, 125, 216], [343, 512, 1000]])
+        });
+        it(`Concatenation`, () => {
+            expect(math.concat(this.matrix_3x3, this.matrix_3x3)._data).toEqual([[1, 2, 3, 1, 2, 3], [4, 5, 6, 4,
+                5, 6], [7, 8, 10, 7, 8, 10]])
+            expect(math.concat(this.matrix_3x3, this.matrix_3x3, 0)._data).toEqual([[1, 2, 3], [4, 5, 6], [7, 8, 10], [1, 2, 3], [4, 5, 6], [7, 8, 10]])
+        });
+        it(`Complex Numbers`, () => {
+            expect(math.sqrt(-1).im).toEqual(1);
+            const arr = ['3 + 4i', '4 + 3i', '-i', '10i'].reduce((arr, n) => {
+                arr.push(math.complex(n));
+                return arr;
+            }, []);
+            expect(arr[0].im).toEqual(4)
+            expect(arr[3].re).toEqual(0)
+
+        });
+    });
 })
 describe(`Benchmarks and Relative Performance`, () => {
     it(`measure relative performance of different loop- ing styles`, () => {
