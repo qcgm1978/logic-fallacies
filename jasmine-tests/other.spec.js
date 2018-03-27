@@ -1,5 +1,51 @@
 
 describe(`An extensive math library for JavaScript and Node.js http://mathjs.org`, () => {
+    describe(`GNU Octave: https://www.gnu.org/software/octave/`, () => {
+        it(`Solve systems of equations with linear algebra operations on vectors and matrices.`, () => {
+            const b = math.matrix([[4], [9], [2]]), // Column vector
+                A = math.matrix([[3, 4, 5], [1, 3, 1], [3, 5, 9]]),
+                C = math.simplify('b / A');     // Solve the system Ax = b
+            expect(C.fn).toEqual('divide')
+        });
+        it(`Visualize data with high-level plot commands in 2D and 3D.`, () => {
+            // x = -10: 0.1: 10; # Create an evenly - spaced vector from - 10..10
+            // y = sin(x); # y is also a vector
+            // plot(x, y);
+            // title("Simple 2-D Plot");
+            // xlabel("x");
+            // ylabel("sin (x)");
+        });
+        describe(`https://octave.org/doc/interpreter/Simple-Examples.html#Simple-Examples`, () => {
+            it(`Elementary Calculations`, () => {
+                const EulerIdentity = math.pow(Math.E, math.multiply(math.i, math.PI))
+                expect(EulerIdentity.re).toBe(-1)
+            });
+        })
+        it(`Creating a Matrix`, () => {
+            const A = math.matrix([[1, 1, 2], [3, 5, 8], [13, 21, 34]]),
+                B = math.random(3, 2);
+            expect(A._data).toEqual([[1, 1, 2], [3, 5, 8], [13, 21, 34]])
+            expect(B._data).toEqual();
+            const B1 = math.random(2, 3)
+            expect(B1).toBeGreaterThan(2)
+            expect(B1).toBeLessThan(3)
+        });
+    })
+    it(`chain`, () => {
+        const chain = math.chain(0);
+        expect(chain.done()).toEqual(0)
+        expect(math.chain(3)
+            .add(4)
+            .subtract(2)
+            .done()).toBe(5); // 5
+
+        const chain1 = math.chain([[1, 2], [3, 4]])
+            .subset(math.index(0, 0), 8)
+            .multiply(3);
+        expect(chain1
+            .done()).toEqual([[24, 6], [9, 12]]);
+        expect(chain1.value).toEqual([[24, 6], [9, 12]])
+    });
     it(`math.js can evaluate expressions and supports chained operations.`, () => {
         // functions and constants
         expect(math.round(math.e, 3)).toBe(2.718)
