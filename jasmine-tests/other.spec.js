@@ -1,5 +1,11 @@
 
 describe(`An extensive math library for JavaScript and Node.js http://mathjs.org`, () => {
+    beforeAll: {
+        this.matrix = math.matrix([1, 2, 3]);
+        this.matrix_3x3 = math.matrix([[1, 2, 3], [4, 5, 6], [7, 8, 10]]);
+
+
+    }
     describe(`GNU Octave: https://www.gnu.org/software/octave/`, () => {
         it(`Solve systems of equations with linear algebra operations on vectors and matrices.`, () => {
             const b = math.matrix([[4], [9], [2]]), // Column vector
@@ -29,6 +35,12 @@ describe(`An extensive math library for JavaScript and Node.js http://mathjs.org
             const B1 = math.random(2, 3)
             expect(B1).toBeGreaterThan(2)
             expect(B1).toBeLessThan(3)
+        });
+        it(`Matrix Arithmetic`, () => {
+            expect(math.multiply(this.matrix, 2)._data).toEqual([2, 4, 6])
+            expect(math.dotMultiply(this.matrix, this.matrix)._data).toEqual([1, 4, 9])
+            expect(math.transpose(this.matrix)._data).toEqual([1, 2, 3])
+            expect(math.transpose(this.matrix_3x3)._data).toEqual([[1, 4, 7], [2, 5, 8], [3, 6, 10]])
         });
     })
     it(`chain`, () => {
