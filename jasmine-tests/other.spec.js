@@ -42,6 +42,12 @@ describe(`An extensive math library for JavaScript and Node.js http://mathjs.org
             expect(math.transpose(this.matrix)._data).toEqual([1, 2, 3])
             expect(math.transpose(this.matrix_3x3)._data).toEqual([[1, 4, 7], [2, 5, 8], [3, 6, 10]])
         });
+        it(`Solving Systems of Linear Equations`, () => {
+            expect(math.simplify('2H+O').args[0].fn).toEqual('multiply')
+        });
+        it(` Integrating Differential Equations`,()=>{
+            
+        });
     })
     it(`chain`, () => {
         const chain = math.chain(0);
