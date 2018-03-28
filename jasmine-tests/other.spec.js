@@ -45,8 +45,8 @@ describe(`An extensive math library for JavaScript and Node.js http://mathjs.org
         it(`Solving Systems of Linear Equations`, () => {
             expect(math.simplify('2H+O').args[0].fn).toEqual('multiply')
         });
-        it(` Integrating Differential Equations`,()=>{
-            
+        it(` Integrating Differential Equations`, () => {
+
         });
     })
     it(`chain`, () => {
@@ -671,3 +671,21 @@ describe(`Bitwise operators treat their operands as a sequence of 32 bits (zeroe
         });
     })
 })
+describe(`Calculations for Molecular Biology and Biotechnology`, () => {
+    describe(`Calculations for Molecular Biology and Biotechnology`, () => {
+        describe(`SIgnIfIcant dIgItS`, () => {
+            it(`How many signicant digits are there in each of the  following measurements?`, () => {
+                const num = getDigitLength('3 001 000 000 bp');
+                expect(num).toBe(10)
+                expect(getDigitLength('0.003 04 g')).toBe(6)
+                expect(getDigitLength('0.000 210 liters (L)')).toBe(7)
+            });
+        });
+    });
+});
+
+function getDigitLength(str) {
+    const replaceStr = str.replace(/\s+/g, '');
+    const str1 = /(\d|\.)+/.exec(replaceStr)[0];
+    return str1.includes('.') ? str1.length - 1 : str1.length;
+}
