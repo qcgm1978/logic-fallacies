@@ -4,7 +4,7 @@ const result = regression.linear([[0, 1], [32, 67], [12, 79]]);
 const gradient = result.equation[0];
 const yIntercept = result.equation[1];
 const data = [[0, 1], [32, 67], [12, 79]];
-const result1 = regression.polynomial(data, {order: 3});
+const result1 = regression.polynomial(data, { order: 3 });
 chai.use(require('chai-match'));
 describe('A javascript library containing a collection of least squares fitting methods ', () => {
     it('Fits the input data to a straight line with the equation . It returns the coefficients in the form [m, c].', () => {
@@ -16,7 +16,7 @@ describe('A javascript library containing a collection of least squares fitting 
     });
     it('polynomial', () => {
         const data = [[0, 1], [32, 67], [12, 79]];
-        const result = regression.polynomial(data, {order: 3,precision:3});
-        (result.equation[0]+'').split('.')[1].length.should.equal(3)
-    })
+        const result = regression.polynomial(data, { order: 3, precision: 3 });
+        (result.equation[0] + '').split('.')[1].length.should.equal(3)
+    });
 });

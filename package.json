@@ -6,11 +6,6 @@
   "chromium-args": "--enable-logging=stderr",
   "watch": {
     "test": {
-      "run_node": {
-        "patterns": [
-          "node/js/*.js"
-        ]
-      },
       "js": {
         "patterns": [
           "jasmine-www/**/*.js",
@@ -23,8 +18,7 @@
     "diff": "git diff debug jet -- jasmine-test/browser.spec.js",
     "start": "npm run watch",
     "test": "npm run watch",
-    "test-node": "npm-watch run_node",
-    "run_node": "mocha node/js/**.spec.js  --watch --recursive",
+    "mocha": "mocha mocha/**/**.spec.js  --watch --recursive --inspect",
     "js": "karma start karma.conf.js ",
     "watch": "npm-watch js",
     "debug": "karma start karma.conf.js",
@@ -66,11 +60,13 @@
     "cors": "^2.8.4",
     "deeplearn": "^0.5.0",
     "express": "^4.16.3",
+    "gm": "^1.23.1",
     "google-translate-api": "^2.3.0",
     "jquery": "^3.3.1",
     "knex": "^0.14.4",
     "lodash": "^4.17.4",
     "method-override": "^2.3.10",
+    "moment": "^2.21.0",
     "mongoose": "^5.0.10",
     "morgan": "^1.9.0",
     "regression": "https://github.com/qcgm1978/regression-js.git"
