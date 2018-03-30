@@ -3,6 +3,18 @@ const chai = require('chai'), should = chai.should();
 
 const User = require('./User')
 const expect = require('chai').expect
+const gm = require('gm');
+describe(`https://www.creativebloq.com/features/20-nodejs-modules-you-need-to-know`, (done) => {
+  it(` all the typical image operations – resizing, clipping and encoding to name just a few.`, () => {
+    const response = 'OK'
+    gm('/path/to/image.jpg')
+      .resize(500, 250)
+      .autoOrient()
+      .write(response, error => {
+        expect(error).toEqual(done)
+      });
+  });
+});
 
 describe('User module', () => {
   describe('"up"', () => {

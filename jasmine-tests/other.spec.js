@@ -1,3 +1,12 @@
+describe(`Logical consequence`, () => {
+    it(`Syntactic accounts of logical consequence rely on schemes using inference rules`, () => {
+        const a = [1, 2, 3], b = [1, 2], c = [3];
+        expect(_.difference(a, b).length).toBeTruthy()
+        expect(_.difference(c, b).length).toBeTruthy()
+        expect(_.difference(a, b).length).toBeTruthy()
+
+    });
+});
 describe(`NLP`, () => {
     it(`https://en.wikipedia.org/wiki/Natural-language_programming`, () => {
 

@@ -8,7 +8,7 @@
     "test": {
       "run_node": {
         "patterns": [
-          "node/js/**/*.js"
+          "node/js/*.js"
         ]
       },
       "js": {
@@ -24,7 +24,7 @@
     "start": "npm run watch",
     "test": "npm run watch",
     "test-node": "npm-watch run_node",
-    "run_node": "mocha node/js/**.spec.js",
+    "run_node": "mocha node/js/**.spec.js  --watch --recursive",
     "js": "karma start karma.conf.js ",
     "watch": "npm-watch js",
     "debug": "karma start karma.conf.js",
