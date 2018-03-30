@@ -1,4 +1,10 @@
+describe(`NLP`, () => {
+    it(`https://en.wikipedia.org/wiki/Natural-language_programming`, () => {
 
+        const NLP = 'NLP', programming = 'programming', obj = { NLP, programming, ['natural-language']: 'natural-language' }, arr = [`Natural-language programming (${obj.NLP}) is an ontology-assisted way of ${obj.programming} in terms of ${obj['natural-language']} sentences, e.g. English.`]
+        expect(arr[0]).toBe('Natural-language programming (NLP) is an ontology-assisted way of programming in terms of natural-language sentences, e.g. English.')
+    });
+});
 describe(`An extensive math library for JavaScript and Node.js http://mathjs.org`, () => {
     beforeAll: {
         this.matrix = math.matrix([1, 2, 3]);
