@@ -1,3 +1,144 @@
+describe(`https://medium.freecodecamp.org/google-publishes-a-javascript-style-guide-here-are-some-key-lessons-1810b8ad050b`, () => {
+    it(`Declare all local variables with either const or let. Use const by defaul`, () => {
+        const func = () => {
+            if (true) {
+                var example = 42;
+            }
+            if (true) {
+                if (typeof example !== 'undefined') {
+                    throw Error
+                }
+            }
+        }
+        const func1 = () => {
+            if (true) {
+                let example = 42;
+            }
+            if (true) {
+                if (typeof example !== 'undefined') {
+                    throw Error
+                }
+            }
+        }
+        expect(func).toThrow()
+        expect(func1).not.toThrow()
+
+    });
+    describe(`“for… of” is the preferred type of ‘for loop’`, () => {
+        it(`The for...of statement creates a loop iterating over iterable objects (including the built-in String, Array, e.g. the Array-like arguments or NodeList objects, TypedArray, Map and Set, and user-defined iterables), invoking a custom iteration hook with statements to be executed for the value of each distinct property of the object.`, () => {
+            function* foo() {
+                yield 1;
+                yield 2;
+            }
+            for (let o of foo()) {
+                expect(o).toBe(1);
+                // expected output: 1
+                break; // closes iterator, triggers return
+            }
+            for (let o of foo()) {
+                expect(o).toMatch(/1|2/);
+                // expected output: 1
+                // break; // closes iterator, triggers return
+            }
+        });
+        it(`Iterating over an Array`, () => {
+            let iterable = [10, 20, 30];
+
+            for (let value of iterable) {
+                value += 1;
+                expect(value).toMatch(/11|21|31/);
+            }
+            let iterable1 = [10, 20, 30];
+
+            for (const value of iterable1) {
+                expect(value).toMatch(/10|20|30/);
+            }
+        });
+        it(`Iterating over a String`, () => {
+            let iterable = 'boo';
+
+            for (let value of iterable) {
+                expect(value).toMatch(/b|o|o/);
+            }
+        });
+        it(`Iterating over a TypedArray`, () => {
+            let iterable = new Uint8Array([0x00, 0xff]);
+
+            for (let value of iterable) {
+                expect(value).toMatch(/0|255/);
+            }
+        });
+        it(`Iterating over a Map`, () => {
+            let iterable = new Map([['a', 1], ['b', 2], ['c', 3]]);
+
+            for (let entry of iterable) {
+                expect([['a', 1], ['b', 2], ['c', 3]]).toContain(entry);
+            }
+            // 
+            // ['b', 2]
+            // ['c', 3]
+
+            for (let [key, value] of iterable) {
+                expect(value).toMatch(/1|2|3/);
+            }
+        });
+        it(`Iterating over a Set`, () => {
+            let iterable = new Set([1, 1, 2, 2, 3, 3]), i = 0;
+
+            for (let value of iterable) {
+                i++
+                expect(value).toMatch(/1|2|3/);
+            }
+            expect(i).toBe(3)
+        });
+        it(`Iterating over the arguments object`, () => {
+            (function () {
+                for (let argument of arguments) {
+                    expect(argument).toMatch(/1|2|3/);
+                }
+            })(1, 2, 3);
+        });
+        it(`Iterating over a DOM collection`, () => {
+            // Note: This will only work in platforms that have
+            // implemented NodeList.prototype[Symbol.iterator]
+            let articleParagraphs = document.querySelectorAll('script');
+
+            for (let paragraph of articleParagraphs) {
+                const src = paragraph.getAttribute('src');
+                src && expect(src).toContain('.js')
+            }
+        });
+        it(`In for...of loops, abrupt iteration termination can be caused by break, continue[4], throw or return[5]. In these cases, the iterator is closed.`, () => {
+            function* foo() {
+                yield 1;
+                yield 2;
+                yield 3;
+            };
+
+            for (let o of foo()) {
+                expect(o).toBe(1);
+                break; // closes iterator, triggers return
+            }
+        });
+        it(`Iterating over generators`, () => {
+            function* fibonacci() { // a generator function
+                let [prev, curr] = [0, 1];
+                while (true) {
+                    [prev, curr] = [curr, prev + curr];
+                    yield curr;
+                }
+            }
+
+            for (let n of fibonacci()) {
+                expect(n).toMatch(/1|2|3|5/);
+                // truncate the sequence at 1000
+                if (n >= 5) {
+                    break;
+                }
+            }
+        });
+    });
+});
 describe(`Logical consequence`, () => {
     it(`Syntactic accounts of logical consequence rely on schemes using inference rules`, () => {
         const a = [1, 2, 3], b = [1, 2], c = [3];

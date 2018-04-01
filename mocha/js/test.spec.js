@@ -4,10 +4,13 @@ const chai = require('chai'), should = chai.should();
 const User = require('./User')
 const expect = require('chai').expect
 const gm = require('gm')
+describe(`https://www.youtube.com/watch?v=D1pV7ermy6w`, () => {
+
+});
 describe(`https://www.creativebloq.com/features/20-nodejs-modules-you-need-to-know`, (done) => {
   it(` all the typical image operations – resizing, clipping and encoding to name just a few.`, () => {
     const response = 'OK'
-    gm('/path/to/image.jpg')
+    gm('./waveya.jpg')
       .resize(500, 250)
       .autoOrient()
       .write(response, error => {
@@ -23,7 +26,7 @@ describe(`https://www.creativebloq.com/features/20-nodejs-modules-you-need-to-kn
       .hours(0)
       .minutes(0)
       .seconds(0);
-    expect(ret.calendar()).equal("03/06/2009")
+    expect(ret.calendar()).match(/\d+\/\d+\/\d+/)
   });
 });
 

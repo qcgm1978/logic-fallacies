@@ -46,7 +46,16 @@ module.exports = function (config) {
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['dots'],
-
+        // specReporter: {
+        //     maxLogLines: 5,             // limit number of lines logged per test
+        //     suppressErrorSummary: true, // do not print error summary
+        //     suppressFailed: false,      // do not print information about failed tests
+        //     suppressPassed: false,      // do not print information about passed tests
+        //     suppressSkipped: true,      // do not print information about skipped tests
+        //     showSpecTiming: false,      // print the time elapsed for each spec
+        //     failFast: true              // test would finish with error when a first fail occurs. 
+        // },
+        // plugins: ["karma-jasmine", "karma-spec-reporter"],
 
         // web server port
         port: 9876,
@@ -54,8 +63,6 @@ module.exports = function (config) {
 
         // enable / disable colors in the output (reporters and logs)
         colors: true,
-
-
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_DISABLE,
