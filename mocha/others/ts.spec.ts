@@ -9,7 +9,7 @@ describe(`http://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.ht
     it(`Type annotations`, () => {
         let user = [0, 1, 2];
         // expect(() => greeter1(user)).to.throw();
-        expect(greeter1(user)).to.equal();
+        expect(() => greeter1(user)).not.to.throw();
 
     });
 })
