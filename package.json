@@ -16,7 +16,7 @@
   },
   "scripts": {
     "diff": "git diff debug jet -- jasmine-test/browser.spec.js",
-    "start": "npm run watch",
+    "start": "npm run mocha",
     "test": "npm run watch",
     "mocha": "mocha mocha/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect",
     "js": "karma start karma.conf.js ",
