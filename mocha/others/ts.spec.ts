@@ -2,6 +2,26 @@ import greeter from '../ts/greeter'
 import { greeter1 } from '../ts/greeter'
 
 import { expect } from 'chai'
+var document = {};
+describe(`https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md`, () => {
+    it(`Ambient Declarations`, () => {
+        expect(() => document.title = "Hello").not.to.throw();  // Ok because document has been declared
+    });
+    it(`1.2 Function Types`, () => {
+        function vote(candidate: string, callback: (result: string) => any) {
+            return callback(candidate);
+        }
+
+        const ret = vote("BigPig",
+            function (result: string) {
+                if (result === "BigPig") {
+                    return 'string'
+                }
+            }
+        );
+        expect(ret).to.eql('string')
+    });
+});
 describe(`http://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html`, () => {
     it(`Conditional Types`, () => {
         // type TypeName<T> =
