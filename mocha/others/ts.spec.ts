@@ -1,7 +1,55 @@
-import greeter from '../ts/greeter.ts'
-import { greeter1 } from '../ts/greeter.ts'
+import greeter from '../ts/greeter'
+import { greeter1 } from '../ts/greeter'
 
 import { expect } from 'chai'
+describe(`http://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html`, () => {
+    it(`Conditional Types`, () => {
+        // type TypeName<T> =
+        //     T extends string ? "string" :
+        //         T extends number ? "number" :
+        //             T extends boolean ? "boolean" :
+        //                 T extends undefined ? "undefined" :
+        //                     T extends Function ? "function" :
+        //                         "object";
+
+        // type T0 = TypeName<string>;  // "string"
+        // type T1 = TypeName<"a">;  // "string"
+        // type T2 = TypeName<true>;  // "boolean"
+        // type T3 = TypeName<() => void>;  // "function"
+        // type T4 = TypeName<string[]>;  // "object"
+
+    });
+    describe(`Distributive conditional types`, () => {
+        it(`Type aliases create a new name for a type`, () => {
+            type Name = string;
+            type NameResolver = () => string;
+            type NameOrResolver = Name | NameResolver;
+            function getName(n: NameOrResolver): Name {
+                if (typeof n === "string") {
+                    return n;
+                }
+                else {
+                    return n();
+                }
+            }
+            expect(getName('')).to.equal('')
+            expect(getName(() => '')).to.equal('')
+            expect(getName(() => 1)).to.equal(1)
+        });
+        it(`Conditional types in which the checked type is a naked type parameter are called distributive conditional types. `, () => {
+
+            type T10 = TypeName<string | (() => void)>;  // "string" | "function"
+            type T12 = TypeName<string | string[] | undefined>;  // "string" | "object" | "undefined"
+            type T11 = TypeName<string[] | number[]>;  // "object"
+            function getName(n: T11): T12 {
+                return n;
+            }
+            expect(getName({})).to.eql({})
+        });
+
+        // expect(T10).to.equal()
+    });
+});
 describe(`http://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html`, () => {
     it(`Building your first TypeScript file`, () => {
         expect(greeter('Hawking')).to.equal('Hello, Hawking')
@@ -11,6 +59,39 @@ describe(`http://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.ht
         // expect(() => greeter1(user)).to.throw();
         expect(() => greeter1(user)).not.to.throw();
 
+    });
+    it(` implement an interface just by having the shape the interface requires, without an explicit implements clause.`, () => {
+        interface Person {
+            firstName: string;
+            lastName: string;
+        }
+
+        function greeter(person: Person) {
+            return "Hello, " + person.firstName + " " + person.lastName;
+        }
+
+        let user = { firstName: "Jane", lastName: "User" };
+        expect(greeter(user)).to.equal('Hello, Jane User')
+    });
+    it(`TypeScript supports new features in JavaScript, like support for class-based object-oriented programming.`, () => {
+        class Student {
+            fullName: string;
+            constructor(public firstName: string, public middleInitial: string, public lastName: string) {
+                this.fullName = firstName + " " + middleInitial + " " + lastName;
+            }
+        }
+
+        interface Person {
+            firstName: string;
+            lastName: string;
+        }
+
+        function greeter(person: Person) {
+            return "Hello, " + person.firstName + " " + person.lastName;
+        }
+
+        let user = new Student("Jane", "M.", "User");
+        expect(greeter(user)).to.equal('Hello, Jane User')
     });
 })
 describe(`others`, () => {
