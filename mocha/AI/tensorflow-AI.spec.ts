@@ -43,4 +43,21 @@ describe(`A WebGL accelerated, browser based JavaScript library for training and
             done();
         })
     });
+    it(`broadcasting the value of scalar over all the elements in the tensor.`, () => {
+        const a = tf.tensor1d([1, 2, 3]);
+        const b = tf.scalar(2);
+
+        const result = a.add(b); // a is not modified, result is a new tensor
+        result.data().then(data => console.log(data)); // Float32Array([3, 4, 5]
+
+        // Alternatively you can use a blocking call to get the data.
+        // However this might slow your program down if called repeatedly.
+        console.log(result.dataSync()); // Float32Array([3, 4, 5]
+    });
+});
+describe(`https://arxiv.org/pdf/1803.10827.pdf`, () => {
+    it(`We use an average of weighted class entropy losses, one
+for each joint, to train our encoder-decoder`, () => {
+
+        });
 });

@@ -1,5 +1,5 @@
-import { HelloService } from "./hello-service.interface";
-import { HelloComponent } from "./hello.component";
+import { HelloService } from "../modules/hello-service.interface";
+import { HelloComponent } from "../modules/hello.component";
 import { expect } from 'chai'
 
 class MockHelloService implements HelloService {
