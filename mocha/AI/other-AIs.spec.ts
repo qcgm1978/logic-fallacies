@@ -19,7 +19,7 @@ E ⊆ O × R × O is a set of directed edges of the form
                     const C = { sheep: 2, boat: 1 }, R = [1, 2, 3], O = { add: '+' }
 
                     expect(math.pow([[-1, 2], [3, 1]], 2)).eql([[7, 0], [0, 7]])
-                    expect(math.simplify(`${C.sheep} ${O.add} ${C.boat} / ${R.length}`).toString()).to.equal('7 / 3')
+                    expect(math.simplify(`${C.sheep} ${O.add} ${C.boat} / ${R.length}`).toString()).to.equal('7 / 3');
                 });
         });
     describe(`math.js`, () => {
