@@ -1,4 +1,4 @@
-import { expect } from 'chai'
+import { expect } from 'chai';
 
 import { Network } from 'neataptic';
 // The export parameters specify individual named exports, while the import * as name syntax imports all of them
