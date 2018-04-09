@@ -8,7 +8,11 @@ class MockHelloService implements HelloService {
         return "Hello world!";
     }
 }
-
+describe(`es6`, () => {
+    it(`Create a JavaScript array containing 1…N`, () => {
+        expect(() => [...Array(12).keys()]).to.throw()
+    });
+});
 describe("HelloComponent", () => {
 
     it("should say 'Hello world!'", () => {
