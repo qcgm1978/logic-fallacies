@@ -33,3 +33,10 @@ describe(`The Hitchhiker's Guide to the Galaxy`, () => {
 
     });
 })
+describe(`https://wanago.io/2018/04/02/1-2-3-9-looking-into-assembly-code-of-coercion/`, () => {
+    it(` Array.prototype.toString`, () => {
+        expect([1] + [2]).to.equal('12')
+        expect('12' - '3').to.equal(9)
+        expect([1] + [2] - [3]).to.equal(9)
+    });
+});
