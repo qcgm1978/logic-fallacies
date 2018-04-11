@@ -3,6 +3,34 @@ import { greeter1 } from '../ts/greeter'
 
 import { expect } from 'chai'
 var document = {};
+describe(`https://blogs.msdn.microsoft.com/typescript/2018/03/27/announcing-typescript-2-8/#conditional-types`, () => {
+    describe(`Conditional types`, () => {
+        it(`express a parameter requirement`, () => {
+            function f(s: string) {
+                return s.slice();
+            }
+            expect(() => f({})).to.throw()
+            expect(() => f('')).not.to.throw()
+        });
+        it(`A type alias declaration introduces a type alias in the containing declaration space`, () => {
+            interface Animal {
+                live(): void;
+            }
+            interface Dog extends Animal {
+                woof(): void;
+            }
+            // Has type 'number'
+            type Foo = Dog extends Animal ? number : string;
+            const f = (n: Foo) => s.toFixed()
+            // expect(Foo).to.equal()
+            expect(() => f('1')).to.throw()
+            // Has type 'string'
+            type Bar = RegExp extends Dog ? number : string;
+            const f1 = (s: Bar) => s.slice()
+            expect(f1.bind(1)).to.throw()
+        });
+    });
+});
 describe(`https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md`, () => {
     it(`Ambient Declarations`, () => {
         expect(() => document.title = "Hello").not.to.throw();  // Ok because document has been declared
